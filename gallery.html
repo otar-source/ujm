@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Gallery | Uncle Jeremy Ministries</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --primary-light: #ff6b6b; 
+            --primary-dark: #c1121f; 
+            --secondary: #f77f00; 
+            --secondary-light: #ff9e5e; 
+            --secondary-dark: #d56f00;
+            --accent: #ff9e00; 
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e63946;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(230, 57, 70, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--secondary-dark), #e68a00);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        .text {
+            font-size: 20px;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo small {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: block;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            position: relative;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .nav-menu a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .cta-btn-nav {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            font-size: 12px;
+            display: flex;
+        }
+
+        .cta-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+            color: var(--primary) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section for Gallery */
+        .gallery-hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 180px 0 120px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .gallery-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                        rgba(230, 57, 70, 0.1) 0%,
+                        rgba(247, 127, 0, 0.1) 50%,
+                        rgba(255, 158, 0, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .gallery-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-light {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0 20px;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: none;
+            background: white;
+            color: var(--dark);
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        /* Album Grid */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .album-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .album-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: 1;
+        }
+
+        .album-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .album-cover {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .album-card:hover .album-cover img {
+            transform: scale(1.1);
+        }
+
+        .album-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+
+        .album-info {
+            padding: 25px;
+        }
+
+        .album-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+        }
+
+        .album-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .album-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .theme-verse {
+            background: var(--light-gray);
+            padding: 12px;
+            border-radius: var(--radius);
+            font-style: italic;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+            color: var(--dark);
+        }
+
+        .impact-stats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .impact-stats span {
+            background: linear-gradient(135deg, #fff9f9, #fff5f5);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-light);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border: 4px solid white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 2001;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 2001;
+        }
+
+        .lightbox-nav button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-nav button:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scale(1.1);
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 0 30px;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col {
+            position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+        }
+
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+            color: var(--primary-light);
+        }
+
+        .footer-links i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: #b0b0b0;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+
+        .footer-bottom i {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .navbar {
+                padding: 12px 0;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-xl);
+                padding: 100px 20px 40px;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .nav-menu a {
+                padding: 18px 20px;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: 1px solid transparent;
+            }
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(230, 57, 70, 0.1);
+                border-color: var(--primary-light);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .gallery-hero {
+                padding: 150px 0 80px;
+            }
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+            .filter-container {
+                gap: 10px;
+            }
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .album-grid {
+                grid-template-columns: 1fr;
+            }
+            .lightbox-nav button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                    <span class="text">Uncle Jeremy Ministries</span>
+                    <small>Transforming Children Through Faith</small>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="programs.html"><i class="fas fa-hands"></i> Programs</a></li>
+                <li><a href="gallery.html" class="active"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="get-involved.html" class="cta-btn-nav"><i class="fas fa-heart"></i> Get Involved</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Moments of Transformation</h1>
+            <p>Browse through our outreach albums and witness the impact of God's love in children's lives</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="container">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Albums</button>
+            <button class="filter-btn" data-filter="2021">2021</button>
+            <button class="filter-btn" data-filter="2022">2022</button>
+            <button class="filter-btn" data-filter="2023">2023</button>
+            <button class="filter-btn" data-filter="2024">2024</button>
+            <button class="filter-btn" data-filter="2025">2025</button>
+            <button class="filter-btn" data-filter="school">School Visitations</button>
+        </div>
+    </div>
+
+    <!-- Album Grid -->
+    <section class="section-padding" style="padding-top: 20px;">
+        <div class="container">
+            <div class="album-grid" id="album-grid"></div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <div class="lightbox-nav">
+            <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="share-btn" id="share-btn"><i class="fas fa-share-alt"></i> Share This Image</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Uncle Jeremy Ministries</h3>
+                    </div>
+                    <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Testimonies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="volunteer.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                        <li><a href="donate.html"><i class="fas fa-chevron-right"></i> Donate</a></li>
+                        <li><a href="partner.html"><i class="fas fa-chevron-right"></i> Become a Partner</a></li>
+                        <li><a href="prayer.html"><i class="fas fa-chevron-right"></i> Prayer Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 08161549921</p>
+                        <p><i class="fas fa-phone"></i> 09130202918</p>
+                        <p><i class="fas fa-envelope"></i> unclejeremy97@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Port Harcourt, Rivers State, Nigeria</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uncle Jeremy Ministries. All rights reserved. | Made with <i class="fas fa-heart"></i> for the children</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Album data
+        const albums = [
+            {
+                id: 1,
+                title: "First Community Outreach",
+                year: "2021",
+                location: "Rivers State",
+                themeVerse: "“Salvation is Found Only in Jesus ” (Romans 10:13)",
+                attendance: "187 children",
+                impact: "87 salvations",
+                cover: "images/2021/1.jpg",
+                filter: "2021"
+               
+            },
+            {
+                id: 2,
+                title: " Second Community Outreach",
+                year: "2022",
+                location: "Delta State",
+                themeVerse: "“Only Jesus Can Save ”  (Acts 2:12)",
+                attendance: "300+ children",
+                impact: "150 children gave their lives to Christ",
+                cover: "images/2022/1m.jpg",
+                filter: "2022"
+                
+            },
+            {
+                id: 3,
+                title: "Third Community Outreach",
+                year: "2023",
+                location: "Delta State",
+                themeVerse: "“The Victorious Child” (1Samuel 16:13)",
+                attendance: "415+ children",
+                impact: "250 salvations",
+                cover: "images/2023/1.jpg",
+                filter: "2023"
+            },
+            {
+                id: 4,
+                title: "Fourth Community Outreach",
+                year: "2024",
+                location: "Delta States",
+                themeVerse: "“The Reconciled Child ”(2 Cor. 5:18–20)",
+                attendance: "600+ children",
+                impact: " ",
+                cover: "images/2024/1.jpg",
+                filter: "2024"
+               
+            },
+            {
+         id: 5,
+                title: "fifth Community Outreach",
+                year: "2025",
+                location: "Rivers States",
+                themeVerse: "“The Spirit Filled Child” (Luke 2:40)",
+                attendance: " ",
+                impact: " ",
+                cover: "images/2025/1.jpg",
+                filter: "2025"
+          
+            },
+            {
+                id: 6,
+                title: "School Visitations",
+                year: "2021,2022,2023,2024",
+                location: "Port Harcourt",
+                themeVerse: "“Pray without ceasing” (1Thessalonians 5:17)",
+                attendance: "250 children",
+                impact: "Many received prayer baptism",
+                cover: "images/2023-2024/1.jpg",
+                filter: "school"
+            }
+        ];
+
+        // Render albums
+        function renderAlbums(filter = "all") {
+            const grid = document.getElementById('album-grid');
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? albums : albums.filter(a => a.filter === filter);
+            
+            filtered.forEach(album => {
+                const card = document.createElement('div');
+                card.className = 'album-card';
+                card.setAttribute('data-id', album.id);
+                
+                card.innerHTML = `
+                    <div class="album-cover">
+                        <img src="${album.cover}" alt="${album.title}">
+                        <span class="album-year">${album.year}</span>
+                    </div>
+                    <div class="album-info">
+                        <h3>${album.title}</h3>
+                        <div class="album-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> ${album.location}</span>
+                        </div>
+                        <div class="theme-verse">${album.themeVerse}</div>
+                        <div class="impact-stats">
+                            <span><i class="fas fa-users"></i> ${album.attendance}</span>
+                            <span><i class="fas fa-heart"></i> ${album.impact}</span>
+                        </div>
+                    </div>
+                `;
+                
+                // card.addEventListener('click', () => openLightbox(album));
+                card.addEventListener('click', () => {
+    window.location.href = `album-detail.html?id=${album.id}`;
+});
+                grid.appendChild(card);
+            });
+        }
+
+        // Lightbox
+        let currentAlbum = null;
+        let currentImageIndex = 0;
+
+        function openLightbox(album) {
+            currentAlbum = album;
+            currentImageIndex = 0;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightboxImage() {
+            if (!currentAlbum) return;
+            const img = currentAlbum.images[currentImageIndex];
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox-caption').innerText = img.caption;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            if (!currentAlbum) return;
+            currentImageIndex = (currentImageIndex + 1) % currentAlbum.images.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            if (!currentAlbum) return;
+            currentImageIndex = (currentImageIndex - 1 + currentAlbum.images.length) % currentAlbum.images.length;
+            updateLightboxImage();
+        }
+
+        function shareImage() {
+            if (!currentAlbum) return;
+            const img = currentAlbum.images[currentImageIndex];
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Uncle Jeremy Ministries',
+                    text: img.caption,
+                    url: window.location.href,
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(`${img.caption} - View more at unclejeremyministries.org/gallery`);
+                alert('Link copied to clipboard!');
+            }
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                renderAlbums(filter);
+            });
+        });
+
+        // Lightbox controls
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('prev-btn').addEventListener('click', prevImage);
+        document.getElementById('next-btn').addEventListener('click', nextImage);
+        document.getElementById('share-btn').addEventListener('click', shareImage);
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Initial render
+        renderAlbums();
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Contact & Donations | Uncle Jeremy Ministries</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="Contact.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="images/ujm-logo.png" alt="Uncle Jeremy Ministries">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/get-involved">Get Involved</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/contact" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact & Donations</h1>
+            <p>We'd love to hear from you. Reach out to partner, volunteer, or support our ministry financially.</p>
+        </div>
+    </section>
+
+    <!-- Contact & Form Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Left Column: Contact Info -->
+                <div class="contact-info">
+                    <h2 class="section-title">Get in Touch</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="info-content">
+                            <h3>Call or Text</h3>
+                            <p><a href="tel:+2348161549921">08161549921</a></p>
+                            <p><a href="tel:+2349130202918">09130202918</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:unclejeremy97@gmail.com">unclejeremy97@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <h3>Office Address</h3>
+                            <p>Port Harcourt, Rivers State, Nigeria</p>
+                            <p>(Headquarters)</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-users"></i></div>
+                        <div class="info-content">
+                            <h3>Department Routing</h3>
+                            <div class="department-badges">
+                                <span class="badge">Partnerships</span>
+                                <span class="badge">Volunteer Inquiries</span>
+                                <span class="badge">Donations</span>
+                                <span class="badge">Prayer Requests</span>
+                                <span class="badge">School Outreach</span>
+                            </div>
+                            <p style="margin-top: 1rem;"><small>Use the form to select a specific department.</small></p>
+                        </div>
+                    </div>
+
+                    <!-- Corporate Partners -->
+                    <div style="margin-top: 2rem;">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Our Partners</h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span style="background: var(--light-bg); padding: 0.5rem 1rem; border-radius: 5px;">Leadworth Global Initiative</span>
+                            <span style="background: var(--light-bg); padding: 0.5rem 1rem; border-radius: 5px;">Kaldoni Networks</span>
+                            <span style="background: var(--light-bg); padding: 0.5rem 1rem; border-radius: 5px;">Glow for Jesus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="section-title">Send a Message</h2>
+                    <form id="contactForm" onsubmit="event.preventDefault(); alert('Form submitted (demo). In production, this would send to unclejeremy97@gmail.com with department routing.');">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select a department</option>
+                                <option value="partnerships">Partnerships</option>
+                                <option value="volunteer">Volunteer Inquiries</option>
+                                <option value="donations">Donations / Financial Support</option>
+                                <option value="prayer">Prayer Requests</option>
+                                <option value="school">School Outreach</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Donation Section -->
+            <div class="donation-section">
+                <h2 class="section-title" style="display: block; text-align: center;">Support the Ministry</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Your generosity helps us reach more children with the Gospel. All donations are secure and tax-deductible.</p>
+
+                <div class="donation-cards">
+                    <!-- Monie Point -->
+                    <div class="donation-card">
+                        <div class="donation-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Monie Point</h3>
+                        <div class="donation-details">
+                            <p><strong>Account Name:</strong> Uncle Jeremy Ministries</p>
+                            <p><strong>Account Number:</strong> 9130202918</p>
+                        </div>
+                        <p class="donation-note">Available for instant transfers via Monie Point app.</p>
+                    </div>
+
+                    <!-- PayPal -->
+                    <div class="donation-card">
+                        <div class="donation-icon"><i class="fab fa-paypal"></i></div>
+                        <h3>PayPal</h3>
+                        <div class="donation-details">
+                            <p><strong>Email:</strong> unclejeremy97@gmail.com</p>
+                        </div>
+                        <p class="donation-note">Send via PayPal to our email address. International donations accepted.</p>
+                        <a href="#" class="submit-btn" style="margin-top: 1rem; display: inline-block;">Donate via PayPal</a>
+                    </div>
+
+                    <!-- Bank Transfer -->
+                    <div class="donation-card">
+                        <div class="donation-icon"><i class="fas fa-university"></i></div>
+                        <h3>Bank Transfer (Nigeria)</h3>
+                        <div class="bank-details">
+                            <p><strong>Bank:</strong> [Bank Name]</p>
+                            <p><strong>Account Name:</strong> Uncle Jeremy Ministries</p>
+                            <p><strong>Account Number:</strong> [Account Number]</p>
+                            <p><strong>Sort Code:</strong> [Sort Code]</p>
+                        </div>
+                        <p class="donation-note">Contact us for specific bank details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section (Optional) -->
+            <div class="map-section">
+                <h2 class="section-title" style="display: block; text-align: center;">Find Us</h2>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Interactive Map Loading</p>
+                        <p style="font-size: 0.9rem;">Port Harcourt, Rivers State, Nigeria</p>
+                        <p><small>In production, embed Google Maps here.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Uncle Jeremy Ministries</h4>
+                    <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/programs">Our Programs</a></li>
+                        <li><a href="/events">Upcoming Events</a></li>
+                        <li><a href="/gallery">Photo Gallery</a></li>
+                        <li><a href="/news">News & Testimonies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="/volunteer">Volunteer</a></li>
+                        <li><a href="/donate">Donate</a></li>
+                        <li><a href="/partner">Become a Partner</a></li>
+                        <li><a href="/pray">Prayer Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 08161549921</li>
+                        <li><i class="fas fa-phone"></i> 09130202918</li>
+                        <li><i class="fas fa-envelope"></i> unclejeremy97@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Port Harcourt, Rivers State, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Uncle Jeremy Ministries. All rights reserved. | Website designed with faith.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for mobile menu -->
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // For demo, just log form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const department = document.getElementById('department').value;
+            alert(`Message sent to ${department} department. (Demo mode - in production, this would email unclejeremy97@gmail.com)`);
+            this.reset();
+        });
+    </script>
+
+    <!-- Additional CSS for mobile menu -->
+    <style>
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</body>
+</html>

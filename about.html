@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>About Us | Uncle Jeremy Ministries</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --primary-light: #ff6b6b; 
+            --primary-dark: #c1121f; 
+            --secondary: #f77f00; 
+            --secondary-light: #ff9e5e; 
+            --secondary-dark: #d56f00;
+            --accent: #ff9e00; 
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e63946;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(230, 57, 70, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--secondary-dark), #e68a00);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        .text {
+            font-size: 20px;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo small {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: block;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            position: relative;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .nav-menu a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .cta-btn-nav {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            font-size: 12px;
+            display: flex;
+        }
+
+        .cta-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+            color: var(--primary) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section for About */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 180px 0 120px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .about-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                        rgba(230, 57, 70, 0.1) 0%,
+                        rgba(247, 127, 0, 0.1) 50%,
+                        rgba(255, 158, 0, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-light {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .card-icon i {
+            font-size: 2rem;
+            color: white;
+            transform: rotate(-45deg);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon i {
+            transform: rotate(0deg);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            position: relative;
+            border-left: 5px solid var(--primary);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 5px solid var(--primary);
+        }
+
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:before {
+            left: -50px;
+            right: auto;
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 30px;
+            }
+            .timeline-item {
+                justify-content: flex-start;
+                padding-left: 60px;
+            }
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+            .timeline-content {
+                width: 100%;
+                border-left: 5px solid var(--primary);
+                border-right: none;
+            }
+            .timeline-item:nth-child(even) .timeline-content {
+                border-left: 5px solid var(--primary);
+                border-right: none;
+            }
+            .timeline-content:before {
+                left: -40px !important;
+                right: auto;
+            }
+        }
+
+        /* Statement of Faith */
+        .faith-box {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            box-shadow: var(--shadow-xl);
+            border-left: 5px solid var(--primary);
+            border-right: 5px solid var(--secondary);
+        }
+
+        .faith-box h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faith-box p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .faith-box p:before {
+            content: '✝';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Leadership */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .leader-img {
+            height: 280px;
+            background: linear-gradient(135deg, var(--light-gray), #f1f1f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-img i {
+            font-size: 4rem;
+            color: var(--primary-light);
+        }
+
+        .leader-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .leader-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .leader-info .position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .leader-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Organizational Structure */
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .structure-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .structure-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--secondary);
+        }
+
+        .structure-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .structure-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .structure-item p {
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 0 30px;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col {
+            position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+        }
+
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+            color: var(--primary-light);
+        }
+
+        .footer-links i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: #b0b0b0;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+
+        .footer-bottom i {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .navbar {
+                padding: 12px 0;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-xl);
+                padding: 100px 20px 40px;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .nav-menu a {
+                padding: 18px 20px;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: 1px solid transparent;
+            }
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(230, 57, 70, 0.1);
+                border-color: var(--primary-light);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .about-hero {
+                padding: 150px 0 80px;
+            }
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            .faith-box {
+                padding: 40px 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                    <span class="text">Uncle Jeremy Ministries</span>
+                    <small>Transforming Children Through Faith</small>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="programs.html"><i class="fas fa-hands"></i> Programs</a></li>
+                <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="get-involved.html" class="cta-btn-nav"><i class="fas fa-heart"></i> Get Involved</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Uncle Jeremy Ministries</h1>
+            <p>Transforming young hearts through God's love since 2021</p>
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Journey</h2>
+                <p>From humble beginnings to touching thousands of lives across Nigeria</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2021</span>
+                        <h3>First Edition Outreach - Rivers State</h3>
+                        <p>Launched with 187 children, establishing our foundational outreach model. Theme: "Jesus, the Light of the World".</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2022</span>
+                        <h3>Second Edition - Delta State</h3>
+                        <p>Expanded to Delta State, reaching 300+ children. 150 children gave their lives to Christ. Theme: "Jesus, the Way Maker".</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2023</span>
+                        <h3>Third Edition - Multi-State</h3>
+                        <p>Outreaches in Rivers, Delta, and Lagos States. Total children reached: 450+. Introduced school visitation program.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2024</span>
+                        <h3>Fourth Edition - Milestone Year</h3>
+                        <p>600+ children reached across multiple states. Launched Children Prayer Conference and Teens Empowerment Program.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Core Objectives -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Vision & Objectives</h2>
+                <p>What drives us every day</p>
+            </div>
+            
+            <div class="faith-box" style="margin-bottom: 60px;">
+                <h2 class="text-center">Our Vision</h2>
+                <p style="font-size: 1.5rem; text-align: center; font-weight: 600; color: var(--primary-dark); padding-left: 0;">"To establish the kingdom of God in young people, raising a generation of purpose-driven leaders who will transform their communities."</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Spiritual Nurture</h3>
+                    <p>Leading children into a personal relationship with Jesus Christ through Bible teaching and discipleship.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Character Development</h3>
+                    <p>Instilling integrity, respect, and godly values that shape children into responsible adults.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Community Engagement</h3>
+                    <p>Mobilizing local communities to support and protect their children's future.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Leadership Training</h3>
+                    <p>Equipping young people with skills to become leaders in their schools and churches.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family Support</h3>
+                    <p>Strengthening families through parenting programs and material assistance.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Evangelism</h3>
+                    <p>Sharing the Gospel through creative outreaches and partnerships with local churches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement of Faith -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Statement of Faith</h2>
+                <p>What we believe</p>
+            </div>
+            <div class="faith-box">
+                <p>We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit.</p>
+                <p>We believe in the deity of our Lord Jesus Christ, His virgin birth, sinless life, miracles, vicarious and atoning death, bodily resurrection, ascension to the right hand of the Father, and personal return in power and glory.</p>
+                <p>We believe in the Holy Spirit, His personality, and His work in regeneration, sanctification, and empowerment for service.</p>
+                <p>We believe the Bible to be the inspired, infallible, and authoritative Word of God.</p>
+                <p>We believe that salvation is by grace through faith in Jesus Christ alone.</p>
+                <p>We believe in the spiritual unity of all believers in our Lord Jesus Christ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Leadership Team</h2>
+                <p>Dedicated servants committed to the vision</p>
+            </div>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="images/ujm.jpg" alt="">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Pastor Jeremy Vwede</h3>
+                        <span class="position">Founder & Chairman</span>
+                        <p>Called to children's ministry in 2019, Pastor Jeremy has a passion for reaching the next generation with the Gospel.</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Mrs. Sarah</h3>
+                        <span class="position">Secretary</span>
+                        <p>Experienced educator and administrator ensuring smooth operations and documentation of ministry impact.</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Evang. Michael</h3>
+                        <span class="position">Outreach Coordinator</span>
+                        <p>Leads the planning and execution of all JCCO outreaches and school visitations across Nigeria.</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Deaconess Grace Eze</h3>
+                        <span class="position">Prayer Coordinator</span>
+                        <p>Heads the Children Prayer Conference and intercessory team, ensuring spiritual covering for all activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizational Structure -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Organizational Structure</h2>
+                <p>The dedicated team behind the ministry</p>
+            </div>
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Chairman</h4>
+                    <p>Pastor Jeremy</p>
+                </div>
+                <div class="structure-item">
+                    <i class="fas fa-user-edit"></i>
+                    <h4>Secretary</h4>
+                    <p>Mrs. Sarah</p>
+                </div>
+                <div class="structure-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Outreach Coordinator</h4>
+                    <p>Evang. Michael</p>
+                </div>
+                <div class="structure-item">
+                    <i class="fas fa-praying-hands"></i>
+                    <h4>Prayer Coordinator</h4>
+                    <p>Deaconess Grace Eze</p>
+                </div>
+                <div class="structure-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Partnerships Lead</h4>
+                    <p>Bro. Daniel Ibe</p>
+                </div>
+                <div class="structure-item">
+                    <i class="fas fa-school"></i>
+                    <h4>School Liaison</h4>
+                    <p>Sis. Chioma Nwachukwu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Uncle Jeremy Ministries</h3>
+                    </div>
+                    <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Testimonies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="volunteer.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                        <li><a href="donate.html"><i class="fas fa-chevron-right"></i> Donate</a></li>
+                        <li><a href="partner.html"><i class="fas fa-chevron-right"></i> Become a Partner</a></li>
+                        <li><a href="prayer.html"><i class="fas fa-chevron-right"></i> Prayer Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 08161549921</p>
+                        <p><i class="fas fa-phone"></i> 09130202918</p>
+                        <p><i class="fas fa-envelope"></i> unclejeremy97@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Port Harcourt, Rivers State, Nigeria</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uncle Jeremy Ministries. All rights reserved. | Made with <i class="fas fa-heart"></i> for the children</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

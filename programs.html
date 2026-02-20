@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Our Programs | Uncle Jeremy Ministries</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --primary-light: #ff6b6b; 
+            --primary-dark: #c1121f; 
+            --secondary: #f77f00; 
+            --secondary-light: #ff9e5e; 
+            --secondary-dark: #d56f00;
+            --accent: #ff9e00; 
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e63946;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(230, 57, 70, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        .text {
+            font-size: 20px;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo small {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: block;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            position: relative;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .nav-menu a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .cta-btn-nav {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            font-size: 12px;
+            display: flex;
+        }
+
+        .cta-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+            color: var(--primary) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .programs-hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 180px 0 120px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .programs-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                        rgba(230, 57, 70, 0.1) 0%,
+                        rgba(247, 127, 0, 0.1) 50%,
+                        rgba(255, 158, 0, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .programs-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .programs-hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .programs-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+        }
+
+        .program-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto 15px;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .program-content {
+            padding: 0 25px 30px;
+        }
+
+        .program-content h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .program-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .program-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--light);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-item i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .impact-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), #2a9d8f);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .school-list {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed var(--light-gray);
+        }
+
+        .school-list h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .school-list ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .school-list li {
+            background: var(--light);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .program-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 0 30px;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col {
+            position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+        }
+
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+            color: var(--primary-light);
+        }
+
+        .footer-links i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: #b0b0b0;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+
+        .footer-bottom i {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .navbar {
+                padding: 12px 0;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-xl);
+                padding: 100px 20px 40px;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .nav-menu a {
+                padding: 18px 20px;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: 1px solid transparent;
+            }
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(230, 57, 70, 0.1);
+                border-color: var(--primary-light);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .programs-hero {
+                padding: 150px 0 80px;
+            }
+            .programs-hero h1 {
+                font-size: 2.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .programs-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        /* Events & News Section */
+.events-news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.column-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.column-title i {
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+/* Event Items */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.event-item {
+    display: flex;
+    gap: 20px;
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.event-date-badge {
+    min-width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+}
+
+.event-day {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.event-month {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.event-year {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h4 {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.event-theme {
+    font-style: italic;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.event-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.event-meta i {
+    color: var(--primary);
+    width: 16px;
+    margin-right: 5px;
+}
+
+.btn-small {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+}
+
+/* News Items */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-item {
+    display: flex;
+    gap: 20px;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.news-image {
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-content {
+    padding: 15px 15px 15px 0;
+}
+
+.news-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.news-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.news-date i {
+    color: var(--primary);
+}
+
+.view-all-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.view-all-link:hover {
+    color: var(--primary-dark);
+    gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .events-news-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .event-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .event-meta {
+        justify-content: center;
+    }
+    
+    .news-item {
+        flex-direction: column;
+    }
+    
+    .news-image {
+        width: 100%;
+        height: 150px;
+    }
+    
+    .news-content {
+        padding: 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                    <span class="text">Uncle Jeremy Ministries</span>
+                    <small>Transforming Children Through Faith</small>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="programs.html" class="active"><i class="fas fa-hands"></i> Programs</a></li>
+                <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="get-involved.html" class="cta-btn-nav"><i class="fas fa-heart"></i> Get Involved</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="programs-hero">
+        <div class="container">
+            <h1>Our Programs</h1>
+            <p>Reaching children and families through the love of Christ</p>
+        </div>
+    </section>
+
+    <!-- Programs Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Flagship Initiatives</h2>
+                <p>Discover how we're making a difference</p>
+            </div>
+            <div class="programs-grid">
+                <!-- JCCO -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Jesus' Children Community Outreach (JCCO)</h3>
+                        <p class="program-description">Our annual flagship outreach bringing the Gospel and practical support to children in communities across Nigeria.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Annual (August)</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> 4-16 years</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> <strong>Locations:</strong> Rivers, Delta, Lagos</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-heart"></i> 600+ children reached in 2024</span>
+                    </div>
+                </div>
+
+                <!-- School Outreach Initiatives -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>School Outreach Initiatives</h3>
+                        <p class="program-description">Partnering with schools for character development, moral instruction, and spiritual mentorship.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Ongoing during term</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> Primary & Secondary</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-school"></i> 6 schools visited</span>
+                        <div class="school-list">
+                            <h4>Partner Schools:</h4>
+                            <ul>
+                                <li>Destiny Int'l School</li>
+                                <li>Excel Academy</li>
+                                <li>Gracefield College</li>
+                                <li>Heritage Schools</li>
+                                <li>Royal Priory</li>
+                                <li>Sunrise Academy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Children Prayer Conference (CPC) -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Children Prayer Conference (CPC)</h3>
+                        <p class="program-description">A dedicated time of prayer, worship, and teaching to equip children in their spiritual walk.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Quarterly</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> 7-14 years</div>
+                            <div class="detail-item"><i class="fas fa-church"></i> <strong>Theme:</strong> "Prayer Warriors"</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-praying-hands"></i> 250+ attendees in 2024</span>
+                    </div>
+                </div>
+
+                <!-- Student Leadership TEDx-Style Talks -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Student Leadership TEDx-Style Talks</h3>
+                        <p class="program-description">Empowering students to speak, lead, and inspire their peers through leadership talks and workshops.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Bi-annual</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> 12-18 years</div>
+                            <div class="detail-item"><i class="fas fa-trophy"></i> <strong>Format:</strong> 5-minute talks, panels</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-star"></i> 30+ student speakers trained</span>
+                    </div>
+                </div>
+
+                <!-- Parenting Talk-Out -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-family"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Parenting Talk-Out</h3>
+                        <p class="program-description">Equipping parents with biblical principles and practical tools for raising godly children.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Monthly sessions</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target:</strong> Parents & Guardians</div>
+                            <div class="detail-item"><i class="fas fa-book"></i> <strong>Topics:</strong> Discipline, faith, education</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-users"></i> 150+ parents reached</span>
+                    </div>
+                </div>
+
+                <!-- Teens Empowerment Program -->
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Teens Empowerment Program</h3>
+                        <p class="program-description">Mentorship, skill acquisition, and spiritual development for teenagers to discover their purpose.</p>
+                        <div class="program-details">
+                            <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Weekly meetings + retreats</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> 13-19 years</div>
+                            <div class="detail-item"><i class="fas fa-bolt"></i> <strong>Focus:</strong> Leadership, career, faith</div>
+                        </div>
+                        <span class="impact-badge"><i class="fas fa-rocket"></i> 120+ teens active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events & News Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Upcoming Events & Latest News</h2>
+            <p>Stay updated with what's happening at Uncle Jeremy Ministries</p>
+        </div>
+        <div class="events-news-grid">
+            <!-- Left Column: Upcoming Events -->
+            <div class="events-column">
+                <h3 class="column-title"><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                <div class="events-list">
+                    <div class="event-item card-hover">
+                        <div class="event-date-badge">
+                            <span class="event-day">30</span>
+                            <span class="event-month">AUG</span>
+                            <span class="event-year">2025</span>
+                        </div>
+                        <div class="event-details">
+                            <h4>JCCO 2025 – Rivers State</h4>
+                            <p class="event-theme">Theme: "Jesus, the Spirit-Filled Child" (Luke 2:40)</p>
+                            <div class="event-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Port Harcourt</span>
+                                <span><i class="fas fa-clock"></i> 10:00 AM</span>
+                            </div>
+                            <a href="#" class="btn btn-outline btn-small">Register / Volunteer</a>
+                        </div>
+                    </div>
+                    <div class="event-item card-hover">
+                        <div class="event-date-badge">
+                            <span class="event-day">TBD</span>
+                            <span class="event-month"></span>
+                            <span class="event-year">2025</span>
+                        </div>
+                        <div class="event-details">
+                            <h4>Children Prayer Conference</h4>
+                            <p class="event-theme">Date Under Review</p>
+                            <div class="event-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Location TBA</span>
+                            </div>
+                            <a href="#" class="btn btn-outline btn-small">Get Notified</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-link">View All Events <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Right Column: Latest News -->
+            <div class="news-column">
+                <h3 class="column-title"><i class="fas fa-newspaper"></i> Latest News</h3>
+                <div class="news-list">
+                    <div class="news-item card-hover">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop" alt="News thumbnail">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Outreach Report</span>
+                            <h4>JCCO 2024 Impact Report Released</h4>
+                            <p class="news-excerpt">600+ children reached, 250 salvations recorded...</p>
+                            <span class="news-date"><i class="fas fa-clock"></i> March 15, 2024</span>
+                        </div>
+                    </div>
+                    <div class="news-item card-hover">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=400&h=300&fit=crop" alt="News thumbnail">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Testimony</span>
+                            <h4>"My Life Changed at JCCO" – Sarah, 12</h4>
+                            <p class="news-excerpt">How a young girl encountered Jesus and now leads her school prayer group...</p>
+                            <span class="news-date"><i class="fas fa-clock"></i> Feb 28, 2024</span>
+                        </div>
+                    </div>
+                    <div class="news-item card-hover">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?w=400&h=300&fit=cropp" alt="News thumbnail">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Partnership</span>
+                            <h4>New School Partnership Announced</h4>
+                            <p class="news-excerpt">We've added 3 new schools to our outreach program...</p>
+                            <span class="news-date"><i class="fas fa-clock"></i> Feb 10, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-link">Read All News <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Call to Action -->
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 style="display: inline-block; margin-bottom: 20px;">Want to be part of a program?</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">Whether you'd like to volunteer, partner, or enroll your child, we'd love to hear from you.</p>
+            <a href="get-involved.html" class="btn btn-primary btn-large"><i class="fas fa-heart"></i> Get Involved</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Uncle Jeremy Ministries</h3>
+                    </div>
+                    <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Testimonies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="volunteer.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                        <li><a href="donate.html"><i class="fas fa-chevron-right"></i> Donate</a></li>
+                        <li><a href="partner.html"><i class="fas fa-chevron-right"></i> Become a Partner</a></li>
+                        <li><a href="prayer.html"><i class="fas fa-chevron-right"></i> Prayer Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 08161549921</p>
+                        <p><i class="fas fa-phone"></i> 09130202918</p>
+                        <p><i class="fas fa-envelope"></i> unclejeremy97@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Port Harcourt, Rivers State, Nigeria</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uncle Jeremy Ministries. All rights reserved. | Made with <i class="fas fa-heart"></i> for the children</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

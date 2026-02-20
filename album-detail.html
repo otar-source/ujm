@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Album Detail | Uncle Jeremy Ministries</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --primary-light: #ff6b6b; 
+            --primary-dark: #c1121f; 
+            --secondary: #f77f00; 
+            --secondary-light: #ff9e5e; 
+            --secondary-dark: #d56f00;
+            --accent: #ff9e00; 
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e63946;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(230, 57, 70, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--secondary-dark), #e68a00);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        .text {
+            font-size: 20px;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo small {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: block;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            position: relative;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.05);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .nav-menu a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 1%;
+        }
+
+        .cta-btn-nav {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            font-size: 12px;
+            display: flex;
+        }
+
+        .cta-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+            color: var(--primary) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Album Hero */
+        .album-hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 180px 0 80px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .album-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                        rgba(230, 57, 70, 0.1) 0%,
+                        rgba(247, 127, 0, 0.1) 50%,
+                        rgba(255, 158, 0, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .album-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .album-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .album-hero .album-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .album-hero .album-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .album-hero .theme-verse {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--primary-dark);
+            background: rgba(255,255,255,0.5);
+            padding: 15px;
+            border-radius: var(--radius);
+        }
+
+        .album-hero .impact-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .album-hero .impact-stats span {
+            background: linear-gradient(135deg, #fff9f9, #fff5f5);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-light);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0 40px;
+            padding: 12px 30px;
+            background: var(--light);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+            border: 1px solid var(--primary-light);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* Image Gallery Section */
+        .gallery-section {
+            padding: 60px 0 100px;
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .size-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .size-control label {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .size-control input {
+            width: 200px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .image-count {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .image-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: white;
+        }
+
+        .image-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit:cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 0 30px;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col {
+            position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+        }
+
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+            color: var(--primary-light);
+        }
+
+        .footer-links i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: #b0b0b0;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+
+        .footer-bottom i {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .navbar {
+                padding: 12px 0;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-xl);
+                padding: 100px 20px 40px;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .nav-menu a {
+                padding: 18px 20px;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: 1px solid transparent;
+            }
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(230, 57, 70, 0.1);
+                border-color: var(--primary-light);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .album-hero {
+                padding: 150px 0 60px;
+            }
+            .album-hero h1 {
+                font-size: 2.2rem;
+            }
+            .gallery-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .size-control {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .size-control input {
+                width: 150px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .album-hero h1 {
+                font-size: 1.8rem;
+            }
+            .size-control {
+                flex-wrap: wrap;
+            }
+            .size-control input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                    <span class="text">Uncle Jeremy Ministries</span>
+                    <small>Transforming Children Through Faith</small>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="programs.html"><i class="fas fa-hands"></i> Programs</a></li>
+                <li><a href="gallery.html" class="active"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="get-involved.html" class="cta-btn-nav"><i class="fas fa-heart"></i> Get Involved</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Hero Section -->
+    <section class="album-hero" id="albumHero">
+        <div class="container">
+            <h1 id="albumTitle">Album Title</h1>
+            <div class="album-meta" id="albumMeta">
+                <span><i class="fas fa-map-marker-alt"></i> <span id="albumLocation">Location</span></span>
+                <span><i class="fas fa-calendar-alt"></i> <span id="albumYear">Year</span></span>
+            </div>
+            <div class="theme-verse" id="albumVerse">Theme Verse</div>
+            <div class="impact-stats" id="albumStats"></div>
+            <a href="gallery.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Gallery</a>
+        </div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-controls">
+                <div class="size-control">
+                    <label for="sizeSlider"><i class="fas fa-sliders-h"></i> Image Size</label>
+                    <input type="range" id="sizeSlider" min="150" max="400" value="280" step="10">
+                </div>
+                <div class="image-count" id="imageCount">0 images</div>
+            </div>
+            <div class="image-grid" id="imageGrid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Uncle Jeremy Ministries</h3>
+                    </div>
+                    <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Testimonies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="volunteer.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                        <li><a href="donate.html"><i class="fas fa-chevron-right"></i> Donate</a></li>
+                        <li><a href="partner.html"><i class="fas fa-chevron-right"></i> Become a Partner</a></li>
+                        <li><a href="prayer.html"><i class="fas fa-chevron-right"></i> Prayer Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 08161549921</p>
+                        <p><i class="fas fa-phone"></i> 09130202918</p>
+                        <p><i class="fas fa-envelope"></i> unclejeremy97@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Port Harcourt, Rivers State, Nigeria</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Uncle Jeremy Ministries. All rights reserved. | Made with <i class="fas fa-heart"></i> for the children</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Album data
+        const albums = [
+            {
+                id: 1,
+                title: "First Community Outreach",
+                year: "2021",
+                location: "Rivers State",
+                themeVerse: "“Salvation is Found Only in Jesus ” (Romans 10:13)",
+                attendance: "187 children",
+                impact: "87 salvations",
+                cover: "images/2021/1.jpg",
+                filter: "2021",
+                images: [
+                    { src: "images/2021/1.jpg" },    
+                    { src: "images/2021/2.jpg" },    
+                    { src: "images/2021/3.jpg" },    
+                    { src: "images/2021/4.jpg" },   
+                    { src: "images/2021/5.jpg" },   
+                    { src: "images/2021/6.jpg" },   
+                    { src: "images/2021/7.jpg" },   
+                    { src: "images/2021/8.jpg" },   
+                    { src: "images/2021/9.jpg" },   
+                    { src: "images/2021/10.jpg" },   
+                    { src: "images/2021/11.jpg" },   
+                    { src: "images/2021/12.jpg" },   
+                    { src: "images/2021/13.jpg" },   
+                    { src: "images/2021/14.jpg" }   
+                  
+                ]
+            },
+            {
+                id: 2,
+                title: " Second Community Outreach",
+                year: "2022",
+                location: "Delta State",
+                themeVerse: "“Only Jesus Can Save ”  (Acts 2:12)",
+                attendance: "300+ children",
+                impact: "150 children gave their lives to Christ",
+                cover: "images/2022/1.jpg",
+                filter: "2022",
+                images: [
+                    { src: "images/2022/17.jpg" }, { src: "images/2022/2.jpg" },
+                    { src: "images/2022/3.jpg" },{ src: "images/2022/4.jpg" },
+                    { src: "images/2022/5.jpg" }, { src: "images/2022/6.jpg" },
+                    { src: "images/2022/7.jpg" },
+                    { src: "images/2022/8.jpg" },
+                    { src: "images/2022/9.jpg" },
+                    { src: "images/2022/10.jpg" },
+                    { src: "images/2022/11.jpg" },
+                    { src: "images/2022/13.jpg" },
+                    { src: "images/2022/14.jpg" },
+                    { src: "images/2022/15.jpg" },
+                    { src: "images/2022/16.jpg" },
+                    { src: "images/2022/1.jpg" }
+                  
+                ]
+            },
+            {
+                id: 3,
+                title: "Third Community Outreach",
+                year: "2023",
+                location: "Delta State",
+                themeVerse: "“The Victorious Child”  (1 Samuel 16:13)",
+                attendance: "415+ children",
+                impact: "250 salvations",
+                cover: "images/2023/1.jpg",
+                images: [
+                    { src: "images/2023/2.jpg" },
+                    { src: "images/2023/3.jpg" },
+                    { src: "images/2023/4.jpg" },
+                    { src: "images/2023/5.jpg" },
+                    { src: "images/2023/5.jpg" },
+                    { src: "images/2023/6.jpg" },
+                    { src: "images/2023/7.jpg" },
+                    { src: "images/2023/8.jpg" },
+                    { src: "images/2023/9.jpg" },
+                    { src: "images/2023/10.jpg" },
+                    { src: "images/2023/11.jpg" },
+                    { src: "images/2023/12.jpg" },
+                    { src: "images/2023/13.jpg" },
+                    { src: "images/2023/14.jpg" },
+                    { src: "images/2023/15.jpg" },
+                    { src: "images/2023/16.jpg" },
+                    { src: "images/2023/17.jpg" },
+                    { src: "images/2023/18.jpg" },
+                    { src: "images/2023/19.jpg" },
+                    { src: "images/2023/20.jpg" },
+                    { src: "images/2023/21.jpg" },
+                    { src: "images/2023/22.jpg" },
+                    { src: "images/2023/23.jpg" },
+                    { src: "images/2023/24.jpg" },
+                    { src: "images/2023/25.jpg" },
+                    { src: "images/2023/26.jpg" },
+                    { src: "images/2023/27.jpg" },
+                    { src: "images/2023/28.jpg" },
+                    { src: "images/2023/29.jpg" },
+                    { src: "images/2023/30.jpg" },
+                    { src: "images/2023/31.jpg" }
+                 
+                ]
+            },
+            {
+                id: 4,
+                title: "Fourth Community Outreach",
+                year: "2024",
+                location: "Delta States",
+                themeVerse: "“The Reconciled Child ” (2 Cor. 5:18–20)",
+                attendance: "600+ children",
+                impact: " ",
+                cover: "images/2025/1.jpg",
+                images: [
+                    { src: "images/2024/1.jpg" },{ src: "images/2024/2.jpg" },
+                    { src: "images/2024/3.jpg" },{ src: "images/2024/4.jpg" },
+                    { src: "images/2024/5.jpg" },{ src: "images/2024/6.jpg" },
+                    { src: "images/2024/7.jpg" },{ src: "images/2024/8.jpg" },
+                    { src: "images/2024/9.jpg" },{ src: "images/2024/10.jpg" },
+                    { src: "images/2024/11.jpg" },{ src: "images/2024/12.jpg" },
+                    { src: "images/2024/13.jpg" },{ src: "images/2024/14.jpg" },
+                    { src: "images/2024/15.jpg" },{ src: "images/2024/16.jpg" },
+                    { src: "images/2024/17.jpg" },{ src: "images/2024/18.jpg" },
+                    { src: "images/2024/19.jpg" },{ src: "images/2024/20.jpg" },
+                    { src: "images/2024/21.jpg" },{ src: "images/2024/22.jpg" },
+                    { src: "images/2024/23.jpg" },{ src: "images/2024/24.jpg" },
+                    { src: "images/2024/25.jpg" },{ src: "images/2024/26.jpg" },
+                    { src: "images/2024/27.jpg" },{ src: "images/2024/28.jpg" },
+                    { src: "images/2024/29.jpg" },{ src: "images/2024/30.jpg" }
+                
+                ]
+            },
+            {
+           id: 5,
+                title: "fifth Community Outreach",
+                year: "2025",
+                location: "Rivers States",
+                themeVerse: "“The Spirit Filled Child” (Luke 2:40)",
+                attendance: " ",
+                impact: " ",
+                cover: "images/2025/1.jpg",
+                filter: "2024",
+                images: [
+                    { src: "images/2025/1.jpg" },
+                    { src: "images/2025/2.jpg" }
+                
+                ]
+            },
+            {
+                id: 6,
+                title: "SCHOOL VISITATIONS",
+                year: "2021,2022,2023,2024",
+                location: "Port Harcourt",
+                themeVerse: "“Pray without ceasing” (1 Thessalonians 5:17)",
+                attendance: "250 children",
+                impact: "Many received prayer baptism",
+                cover: "images/2023-2024/1.jpg",
+                images: [
+                    { src: "images/2023-2024/1.jpg" },
+                    { src: "images/2023-2024/2.jpg" },
+                    { src: "images/2023-2024/3.jpg" },
+                    { src: "images/2023-2024/4.jpg" },
+                
+                ]
+            }
+
+        ];
+
+        // Get album ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const albumId = parseInt(urlParams.get('id'));
+        const album = albums.find(a => a.id === albumId);
+
+        if (!album) {
+            window.location.href = 'gallery.html';
+        } else {
+            // Populate hero section
+            document.getElementById('albumTitle').textContent = album.title;
+            document.getElementById('albumLocation').textContent = album.location;
+            document.getElementById('albumYear').textContent = album.year;
+            document.getElementById('albumVerse').textContent = album.themeVerse;
+            document.getElementById('albumStats').innerHTML = `
+                <span><i class="fas fa-users"></i> ${album.attendance}</span>
+                <span><i class="fas fa-heart"></i> ${album.impact}</span>
+            `;
+
+            // Populate image grid
+            const imageGrid = document.getElementById('imageGrid');
+            album.images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'image-item';
+                item.innerHTML = `<img src="${img.src}" alt="Photo ${index+1} from ${album.title}">`;
+                imageGrid.appendChild(item);
+            });
+
+            // Update image count
+            document.getElementById('imageCount').textContent = `${album.images.length} images`;
+
+            // Size slider functionality
+            const sizeSlider = document.getElementById('sizeSlider');
+            function updateGridSize(value) {
+                imageGrid.style.gridTemplateColumns = `repeat(auto-fill, minmax(${value}px, 1fr))`;
+            }
+
+            sizeSlider.addEventListener('input', function(e) {
+                updateGridSize(e.target.value);
+            });
+
+            // Set initial size
+            updateGridSize(280);
+        }
+    </script>
+</body>
+</html>
