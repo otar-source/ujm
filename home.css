@@ -1511,7 +1511,18 @@ a {
         background: rgba(230, 57, 70, 0.1);
         border-color: var(--primary-light);
     }
-    
+      .logo {
+        gap: 8px;                
+        font-size: 1.2rem;        
+    }
+     .logo .text {
+        font-size: 16px;           
+    }
+    .logo small {
+        font-size: 0.65rem;         
+    }
+}
+
     .menu-toggle {
         display: flex;
     }
@@ -1598,7 +1609,13 @@ a {
     .container {
         padding: 0 15px;
     }
-    
+     .logo {
+        flex-direction: column;     
+        text-align: center;
+    }
+    .logo-icon {
+        margin-bottom: 5px;          
+    }
     h1 { font-size: 2rem; }
     h2 { font-size: 1.8rem; }
     
