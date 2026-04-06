@@ -1,6 +1,6 @@
 // Wait for DOM to be fully loaded before accessing elements
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
+    // ----- DOM Elements -----
     const mobileMenuBtn = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     const statNumbers = document.querySelectorAll('.stat-number');
@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletter-form');
     const yearSpan = document.getElementById('current-year');
 
-    // Mobile Menu Toggle (only if elements exist)
+    // ----- Mobile Menu Toggle -----
     if (mobileMenuBtn && navMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking outside
+        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 navMenu.classList.remove('active');
@@ -26,7 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Mobile menu elements not found');
     }
 
-    // Initialize counters when in viewport
+    // ----- Animated Counter Function -----
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target + '+';
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, 20);
+    }
+
+    // ----- Initialize Counters when in viewport -----
     function initCounters() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -43,19 +58,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load News Articles
-    function loadNews() {
+    // ----- EXPANDABLE NEWS SECTION -----
+    function loadExpandableNews() {
         if (!newsContainer) return;
 
+        // News data with short and long descriptions
+        const newsData = [
+            {
+                id: 1,
+                title: "4th Edition JCCO Touches 200+ Young Hearts",
+                category: "Outreach Report",
+                date: "Dec 15, 2024",
+                image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                shortDesc: "Our recent outreach in Rivers State saw over 200 children participate in life-changing gospel teachings, games, and received essential school supplies.",
+                longDesc: "The 4th edition of Jesus' Children Community Outreach was held in Port Harcourt, Rivers State, with over 200 children from 15 communities. The day included Bible lessons from Luke 2:40, memory verse competitions, health talks, and distribution of 250 school bags and Bibles. 85 children gave their lives to Christ for the first time. Local churches partnered to provide follow-up discipleship. Testimonies from parents highlighted the positive behavior changes in their children."
+            },
+            {
+                id: 2,
+                title: "From Shy Child to Confident Prayer Leader",
+                category: "Transformation Story",
+                date: "Nov 28, 2024",
+                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                shortDesc: "Meet Sarah, a 12-year-old who transformed from a shy participant to a confident prayer leader through our mentorship programs.",
+                longDesc: "Sarah joined our Teens Empowerment Program in 2023 as a quiet, withdrawn girl who struggled to speak in public. Through consistent mentorship, character development classes, and prayer sessions, she discovered her gift in intercession. Today, Sarah leads the children's prayer team, organizes weekly prayer meetings, and has become a role model for younger children. Her mother testified, 'The change in Sarah is miraculous; she now leads family devotions and encourages her siblings.'"
+            },
+            {
+                id: 3,
+                title: "Partnership Expands School Outreach Impact",
+                category: "Ministry Update",
+                date: "Nov 10, 2024",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                shortDesc: "New partnership with Glow for Jesus Foundation enables us to reach 5 additional schools across Delta State in 2025.",
+                longDesc: "We are thrilled to announce a strategic partnership with Glow for Jesus Foundation, a faith-based organization dedicated to youth development. This collaboration will expand our School Outreach Initiative to five new schools in Delta State, reaching an estimated 800 students. The program will include weekly Bible clubs, career guidance, and mentorship from trained volunteers. Additionally, the partnership will provide school supplies and scholarships for 50 underprivileged children. We give God all the glory for this open door."
+            }
+        ];
+
+        // Build HTML
         newsContainer.innerHTML = newsData.map(article => `
-            <div class="news-card fade-in">
+            <div class="news-card expandable-card fade-in" data-id="${article.id}">
                 <div class="news-image">
-                    <img src="${article.image}" alt="${article.title}">
+                    <img src="${article.image}" alt="${article.title}" loading="lazy">
                 </div>
                 <div class="news-content">
                     <span class="news-category">${article.category}</span>
                     <h3 class="news-title">${article.title}</h3>
-                    <p>${article.excerpt}</p>
+                    <div class="news-short">
+                        <p class="news-excerpt">${article.shortDesc}</p>
+                        <span class="read-more-indicator">
+                            <i class="fas fa-chevron-down"></i> Click to read more
+                        </span>
+                    </div>
+                    <div class="news-long" style="display: none;">
+                        <p>${article.longDesc}</p>
+                    </div>
                     <div class="news-date">
                         <i class="far fa-calendar"></i>
                         <span>${article.date}</span>
@@ -63,9 +118,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `).join('');
+
+        // Attach click handlers to each short description
+        document.querySelectorAll('.expandable-card .news-short').forEach(short => {
+            short.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.expandable-card');
+                const longDesc = card.querySelector('.news-long');
+                const indicatorIcon = this.querySelector('.read-more-indicator i');
+                const indicatorSpan = this.querySelector('.read-more-indicator');
+
+                if (!longDesc || !indicatorIcon) return;
+
+                if (longDesc.style.display === 'none') {
+                    // Expand
+                    longDesc.style.display = 'block';
+                    indicatorIcon.classList.remove('fa-chevron-down');
+                    indicatorIcon.classList.add('fa-chevron-up');
+                    indicatorSpan.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+                    this.classList.add('expanded');
+
+                    // Optional: smooth scroll to keep card visible
+                    setTimeout(() => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                } else {
+                    // Collapse
+                    longDesc.style.display = 'none';
+                    indicatorIcon.classList.remove('fa-chevron-up');
+                    indicatorIcon.classList.add('fa-chevron-down');
+                    indicatorSpan.innerHTML = '<i class="fas fa-chevron-down"></i> Click to read more';
+                    this.classList.remove('expanded');
+                }
+            });
+        });
     }
 
-    // Newsletter Form Handler
+    // ----- Newsletter Form Handler -----
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -91,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scroll for Anchor Links
+    // ----- Smooth Scroll for Anchor Links -----
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -115,10 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Lazy Loading Images
+    // ----- Lazy Loading Images (if any have data-src) -----
     function initLazyLoading() {
         const images = document.querySelectorAll('img[data-src]');
-
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -129,11 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
         images.forEach(img => imageObserver.observe(img));
     }
 
-    // Add loading state to buttons on form submission
+    // ----- Add loading class to form submit buttons -----
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', function() {
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -143,65 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Set current year in footer
+    // ----- Set current year in footer -----
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Initialize all features
+    // ----- Initialize All Features -----
     initCounters();
-    loadNews();
+    loadExpandableNews();   // This now renders the expandable cards
     initLazyLoading();
 });
 
-// ======================
-// Global functions (used above)
-// ======================
+// ===== Global Helper Functions =====
 
-// Sample News Data (In production, this would come from an API)
-const newsData = [
-    {
-        id: 1,
-        title: "4th Edition JCCO Reaches 200+ Children in Rivers State",
-        category: "Outreach Report",
-        date: "Dec 15, 2024",
-        image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        excerpt: "Our recent outreach in Rivers State saw 200+ children participate in gospel teachings, games, and received school supplies."
-    },
-    {
-        id: 2,
-        title: "Testimony: From Shy to Confident Leader",
-        category: "Testimony",
-        date: "Nov 28, 2024",
-        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        excerpt: "Meet Sarah, a 12-year-old who transformed from a shy participant to a confident prayer leader through our programs."
-    },
-    {
-        id: 3,
-        title: "New Partnership with Glow for Jesus Foundation",
-        category: "Partnership",
-        date: "Nov 10, 2024",
-        image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        excerpt: "We're excited to announce our new partnership to reach more schools across Delta State in 2025."
-    }
-];
-
-// Animated Counter
-function animateCounter(element, target) {
-    let current = 0;
-    const increment = target / 100;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + '+';
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 20);
-}
-
-// Notification System
+// Notification System (used by newsletter form)
 function showNotification(message, type = 'success') {
     // Remove existing notifications
     const existingNotification = document.querySelector('.notification');
@@ -276,18 +318,7 @@ function showNotification(message, type = 'success') {
     });
 }
 
-// Form Validation Helper
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-
-// Handle page transitions
-window.addEventListener('beforeunload', () => {
-    document.body.classList.add('page-transition');
-});
-
-// Add scroll effect to navbar
+// Scroll effect for navbar
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -313,7 +344,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Add scroll-up class initially
+// Initial navbar state on load
 window.addEventListener('load', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar && window.pageYOffset > 100) {
