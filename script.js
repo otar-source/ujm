@@ -261,7 +261,7 @@ function showNotification(message, type = 'success') {
 
     document.body.appendChild(notification);
 
-    // Add styles for notification if not already present
+    //styles for notification
     if (!document.querySelector('#notification-styles')) {
         const style = document.createElement('style');
         style.id = 'notification-styles';
