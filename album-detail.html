@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="dark.css">
+
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -234,7 +236,7 @@
         .logo-icon {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -547,7 +549,7 @@
         .footer-logo-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -939,7 +941,7 @@
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
                 </div>
                 <div>
                     <span class="text">Uncle Jeremy Ministries</span>
@@ -998,7 +1000,7 @@
                 <div class="footer-col">
                     <div class="footer-logo">
                         <div class="footer-logo-icon">
-                            <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
                         </div>
                         <h3>Uncle Jeremy Ministries</h3>
                     </div>
@@ -1233,6 +1235,23 @@
                     { src: "images/2023-2024/4.jpg" },
                 
                 ]
+            },
+            {
+                id: 7,
+                title: "BIBLE STUDY",
+                year: "2026",
+                location: "Port Harcourt",
+                themeVerse: "“Pray without ceasing” (1 Thessalonians 5:17)",
+                attendance: "250 children",
+                impact: "Many received prayer baptism",
+                cover: "images/2023-2024/1.jpg",
+                images: [
+                    { src: "images/2023-2024/1.jpg" },
+                    { src: "images/2023-2024/2.jpg" },
+                    { src: "images/2023-2024/3.jpg" },
+                    { src: "images/2023-2024/4.jpg" },
+                
+                ]
             }
 
         ];
@@ -1280,12 +1299,12 @@
             // Set initial size
             updateGridSize(280);
         }
-// ========== LIGHTBOX GALLERY ==========
+// LIGHTBOX GALLERY 
 (function() {
     // Exit if no album or images
     if (!album || !album.images || album.images.length === 0) return;
 
-    const images = album.images; // array of { src: ... }
+    const images = album.images; 
     let currentIndex = 0;
     let lightboxActive = false;
 
@@ -1389,6 +1408,37 @@
         }
     });
 })();
+// ===== DARK MODE TOGGLE =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const icon = toggleBtn.querySelector('i');
+    const body = document.body;
+
+    // Check for saved preference
+    const currentMode = localStorage.getItem('darkMode');
+    if (currentMode === 'enabled') {
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    // Toggle on click
+    toggleBtn.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        
+        // Update icon
+        if (isDark) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
+});
     </script>
 </body>
 </html>

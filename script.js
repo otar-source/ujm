@@ -351,3 +351,35 @@ window.addEventListener('load', () => {
         navbar.classList.add('scroll-up');
     }
 });
+
+// ===== DARK MODE TOGGLE =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const icon = toggleBtn.querySelector('i');
+    const body = document.body;
+
+    // Check for saved preference
+    const currentMode = localStorage.getItem('darkMode');
+    if (currentMode === 'enabled') {
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    // Toggle on click
+    toggleBtn.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        
+        // Update icon
+        if (isDark) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
+});

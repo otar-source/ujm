@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="dark.css">
+
     <style>
       
         * {
@@ -240,7 +242,7 @@
         .logo-icon {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: white; /* linear-gradient(135deg, var(--primary), var(--secondary)); */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -258,6 +260,75 @@
             font-weight: 400;
         }
 
+
+
+.logo-image {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;     
+    display: block;
+    flex-shrink: 0;        
+    border-radius: 50%;      
+   
+}
+
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .logo-image {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Medium screens (992px–1023px) */
+@media (max-width: 1023px) and (min-width: 992px) {
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Tablet landscape (769px–991px) */
+@media (max-width: 991px) and (min-width: 769px) {
+    .logo-image {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .logo-image {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .logo-image {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+
+body.dark-mode .logo-image {
+    filter: brightness(0.9) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+ 
+}
+
+
+.logo:hover .logo-image {
+    transform: scale(1.05);
+}
         .nav-menu {
             display: flex;
             list-style: none;
@@ -712,7 +783,7 @@
         .footer-logo-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background:white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -947,6 +1018,48 @@
                 font-size: 2rem;
             }
         }
+        /* ===== IMAGE LOGO – SIZING ===== */
+
+@media (max-width: 420px) {
+    /* Force logo to stay horizontal, hide long text */
+    .logo {
+        flex-direction: row !important;
+        gap: 8px;
+        text-align: left;
+        font-size: 1.2rem;
+    }
+
+    /* Keep "UJM" visible and properly sized */
+    .logo .text {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    /* Hide the full name/subtitle (e.g., "United...") */
+    .logo small {
+        display: none !important;
+    }
+
+    /* Smaller icon to match */
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* Tweak the hamburger menu button so it doesn't overlap */
+    .menu-toggle .bar {
+        width: 22px;
+        height: 2px;
+    }
+
+    /* Keep the nav container tight */
+    .nav-container {
+        gap: 5px;
+    }
+}
     </style>
 </head>
 <body>
@@ -954,14 +1067,19 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
+               
+       
                 <div class="logo-icon">
-                    <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
                 </div>
                 <div>
                     <span class="text">Uncle Jeremy Ministries</span>
                     <small>Transforming Children Through Faith</small>
                 </div>
             </a>
+                     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+</button>
             
             <button class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
@@ -1028,7 +1146,7 @@
                 <div class="footer-col">
                     <div class="footer-logo">
                         <div class="footer-logo-icon">
-                            <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
                         </div>
                         <h3>Uncle Jeremy Ministries</h3>
                     </div>
@@ -1295,6 +1413,38 @@
 
         // Initial render
         renderAlbums();
+
+        // ===== DARK MODE TOGGLE =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const icon = toggleBtn.querySelector('i');
+    const body = document.body;
+
+    // Check for saved preference
+    const currentMode = localStorage.getItem('darkMode');
+    if (currentMode === 'enabled') {
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    // Toggle on click
+    toggleBtn.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        
+        // Update icon
+        if (isDark) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
+});
     </script>
 </body>
 </html>

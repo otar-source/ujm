@@ -33,6 +33,8 @@ body {
     color: var(--dark);
     background-color: #ffffff;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
 }
 
 .container {
@@ -226,7 +228,7 @@ a {
 .logo-icon {
     width: 45px;
     height: 45px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1434,9 +1436,9 @@ display: block;
 }
 
 .footer-logo-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    width: 55px;
+    height: 45px;
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1845,6 +1847,90 @@ display: block;
         gap: 40px;
     }
 }
+/* ===== iPHONE 14 PRO MAX & similar small screens (≤ 430px) ===== */
+@media (max-width: 430px) {
+    /* Override the column layout from the 480px breakpoint */
+    .logo {
+        flex-direction: row !important; /* Force horizontal layout */
+        gap: 8px;
+        text-align: left;
+        font-size: 1.2rem;
+        align-items: center;
+    }
+
+    /* Show only "UJM" prominently */
+    .logo .text {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    /* Hide the long subtitle (e.g., "United...") */
+    .logo small {
+        display: none !important;
+    }
+
+    /* Keep the icon proportionate */
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* Tweak the hamburger menu so it looks balanced */
+    .menu-toggle .bar {
+        width: 24px;
+        height: 2.5px;
+    }
+
+    /* Ensure nav container spacing is tight */
+    .nav-container {
+        gap: 5px;
+    }
+}
+
+@media (max-width: 420px) {
+    /* Force logo to stay horizontal, hide long text */
+    .logo {
+        flex-direction: row !important;
+        gap: 8px;
+        text-align: left;
+        font-size: 1.2rem;
+    }
+
+    /* Keep "UJM" visible and properly sized */
+    .logo .text {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    /* Hide the full name/subtitle (e.g., "United...") */
+    .logo small {
+        display: none !important;
+    }
+
+    /* Smaller icon to match */
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* Tweak the hamburger menu button so it doesn't overlap */
+    .menu-toggle .bar {
+        width: 22px;
+        height: 2px;
+    }
+
+    /* Keep the nav container tight */
+    .nav-container {
+        gap: 5px;
+    }
+}
+
 
 /* Print Styles */
 @media print {

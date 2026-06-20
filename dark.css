@@ -1,0 +1,355 @@
+/* ===== DARK MODE ===== */
+body.dark-mode {
+    /* Override root variables for dark mode */
+    --light: #1a1a2e;
+    --dark: #f0f0f0;
+    --gray: #b0b0b0;
+    --light-gray: #2a2a3e;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.6);
+    background-color: #12121e;
+    color: var(--dark);
+}
+
+/* Background overrides for sections that use light gradients */
+body.dark-mode .bg-light,
+body.dark-mode .mission-section,
+body.dark-mode .programs-section,
+body.dark-mode .partners-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.dark-mode .hero,
+body.dark-mode .album-hero,
+body.dark-mode .gallery-hero,
+body.dark-mode .about-hero,
+body.dark-mode .involved-hero,
+body.dark-mode .programs-hero {
+    background: linear-gradient(135deg, rgba(18, 18, 30, 0.95), rgba(22, 33, 62, 0.9)),
+                url('images/carolcell2.png');
+}
+
+body.dark-mode .hero:before,
+body.dark-mode .album-hero:before,
+body.dark-mode .gallery-hero:before,
+body.dark-mode .about-hero:before,
+body.dark-mode .involved-hero:before,
+body.dark-mode .programs-hero:before {
+    background: linear-gradient(135deg,
+                rgba(230, 57, 70, 0.2) 0%,
+                rgba(247, 127, 0, 0.2) 50%,
+                rgba(255, 158, 0, 0.1) 100%);
+}
+
+/* Cards, boxes, panels */
+body.dark-mode .stat-item,
+body.dark-mode .mission-card,
+body.dark-mode .program-card,
+body.dark-mode .news-card,
+body.dark-mode .partner-logo,
+body.dark-mode .card,
+body.dark-mode .leader-card,
+body.dark-mode .structure-item,
+body.dark-mode .donation-card,
+body.dark-mode .event-item,
+body.dark-mode .news-item,
+body.dark-mode .volunteer-form,
+body.dark-mode .contact-form-container,
+body.dark-mode .contact-info,
+body.dark-mode .donation-details,
+body.dark-mode .method,
+body.dark-mode .newsletter-box,
+body.dark-mode .event-card,
+body.dark-mode .faith-box,
+body.dark-mode .timeline-content,
+body.dark-mode .album-card {
+    background: #1a1a2e;
+    border-color: #2a2a3e;
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .stat-item:before,
+body.dark-mode .mission-card:before,
+body.dark-mode .program-card:before,
+body.dark-mode .card:before,
+body.dark-mode .album-card:before {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+/* Text colors */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode .section-title,
+body.dark-mode .hero-title,
+body.dark-mode .news-title,
+body.dark-mode .event-details h3,
+body.dark-mode .program-content h3,
+body.dark-mode .mission-card h3,
+body.dark-mode .card h3,
+body.dark-mode .leader-info h3 {
+    color: #f0f0f0;
+}
+
+body.dark-mode h1 {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body.dark-mode p,
+body.dark-mode .stat-label,
+body.dark-mode .news-excerpt,
+body.dark-mode .program-description,
+body.dark-mode .mission-card p,
+body.dark-mode .card p,
+body.dark-mode .leader-info p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .hero-subtitle,
+body.dark-mode .section-subtitle {
+    color: #b0b0b0;
+}
+
+/* Navbar and footer */
+body.dark-mode .navbar {
+    background: rgba(18, 18, 30, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .navbar.scrolled {
+    background: rgba(18, 18, 30, 0.98);
+}
+
+body.dark-mode .nav-menu a {
+    color: #f0f0f0;
+}
+
+body.dark-mode .nav-menu a:hover,
+body.dark-mode .nav-menu a.active {
+    background: rgba(230, 57, 70, 0.15);
+    color: var(--primary-light);
+}
+
+body.dark-mode .cta-btn-nav {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white !important;
+}
+
+body.dark-mode .cta-btn-nav:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+    color: var(--primary) !important;
+}
+
+/* Buttons */
+body.dark-mode .btn-outline {
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+}
+
+body.dark-mode .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+body.dark-mode .btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+}
+
+body.dark-mode .btn-secondary {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+}
+
+/* Footer */
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #0a0a15 0%, #12121e 100%);
+}
+
+body.dark-mode .footer-col p,
+body.dark-mode .footer-links a,
+body.dark-mode .contact-info p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .footer-links a:hover {
+    color: white;
+}
+
+body.dark-mode .footer-logo h3 {
+    color: white;
+}
+
+body.dark-mode .footer-bottom {
+    border-top-color: rgba(255,255,255,0.05);
+}
+
+/* Dark mode toggle button itself */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: var(--dark);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 50px;
+    transition: var(--transition);
+    margin-left: 10px;
+    z-index: 1001;
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(230, 57, 70, 0.1);
+    transform: rotate(20deg);
+}
+
+body.dark-mode .dark-mode-toggle {
+    color: #f0f0f0;
+}
+
+/* Adjust mobile spacing */
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        font-size: 1.2rem;
+        padding: 6px 8px;
+        margin-left: 5px;
+    }
+    .nav-container {
+        gap: 5px;
+    }
+}
+
+/* Ensure the toggle is visible on mobile when menu is open */
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        order: 2; /* puts it before the hamburger if you want */
+    }
+    .menu-toggle {
+        order: 3;
+    }
+}
+@media (max-width: 430px) {
+    /* Override the column layout from the 480px breakpoint */
+    .logo {
+        flex-direction: row !important; /* Force horizontal layout */
+        gap: 8px;
+        text-align: left;
+        font-size: 1.2rem;
+        align-items: center;
+    }
+
+    /* Show only "UJM" prominently */
+    .logo .text {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    /* Hide the long subtitle (e.g., "United...") */
+    .logo small {
+        display: none !important;
+    }
+
+    /* Keep the icon proportionate */
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* Tweak the hamburger menu so it looks balanced */
+    .menu-toggle .bar {
+        width: 24px;
+        height: 2.5px;
+    }
+
+    /* Ensure nav container spacing is tight */
+    .nav-container {
+        gap: 5px;
+    }
+}
+/* ===== LOGO IMAGE – MATCHES EXISTING ICON ===== */
+
+/* Default size – matches .logo-icon (45px) */
+.logo-image {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;     /* Ensures the image scales nicely inside */
+    display: block;
+    flex-shrink: 0;          /* Prevents squishing in flex */
+    border-radius: 50%;      /* Optional: makes it circular like the old icon */
+    /* Remove border-radius if your logo is rectangular */
+}
+
+/* ===== RESPONSIVE SIZING – FOLLOWS EXISTING BREAKPOINTS ===== */
+
+/* Large screens (1024px–1199px) – matches existing .logo-icon */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .logo-image {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Medium screens (992px–1023px) */
+@media (max-width: 1023px) and (min-width: 992px) {
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Tablet landscape (769px–991px) */
+@media (max-width: 991px) and (min-width: 769px) {
+    .logo-image {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Very small (≤ 430px, e.g., iPhone 14 Pro Max) */
+@media (max-width: 430px) {
+    .logo-image {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* Tiny (≤ 380px) */
+@media (max-width: 380px) {
+    .logo-image {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+body.dark-mode .logo-image {
+    filter: brightness(0.9) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    /* If your logo is dark on a light background, use this to invert it:
+       filter: brightness(0) invert(1); 
+    */
+}
+
+/* ===== HOVER EFFECT – MATCHES EXISTING .logo:hover ===== */
+.logo:hover .logo-image {
+    transform: scale(1.05);
+}

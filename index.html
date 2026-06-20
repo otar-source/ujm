@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="dark.css">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/heart-book.png">
 </head>
 <body>
@@ -15,19 +16,22 @@
     <div class="container nav-container">
         <a href="index.html" class="logo">
             <div class="logo-icon">
-                <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
             </div>
             <div>
                 <span class="text">Uncle Jeremy Ministries</span>
                 <small>Transforming Children Through Faith</small>
             </div>
         </a>
-        
+             <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+</button>
         <button class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
+   
         
         <ul class="nav-menu" id="nav-menu">
             <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
@@ -323,7 +327,7 @@
             <div class="footer-col">
                 <div class="footer-logo">
                     <div class="footer-logo-icon">
-                        <i class="fas fa-hands-helping"></i>
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
                     </div>
                     <h3>Uncle Jeremy Ministries</h3>
                 </div>
