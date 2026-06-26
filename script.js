@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "4th Edition JCCO Touches 200+ Young Hearts",
                 category: "Outreach Report",
                 date: "Dec 15, 2024",
-                image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                image: "images/2023-2024/5.jpg",
                 shortDesc: "Our recent outreach in Rivers State saw over 200 children participate in life-changing gospel teachings, games, and received essential school supplies.",
                 longDesc: "The 4th edition of Jesus' Children Community Outreach was held in Port Harcourt, Rivers State, with over 200 children from 15 communities. The day included Bible lessons from Luke 2:40, memory verse competitions, health talks, and distribution of 250 school bags and Bibles. 85 children gave their lives to Christ for the first time. Local churches partnered to provide follow-up discipleship. Testimonies from parents highlighted the positive behavior changes in their children."
             },
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "From Shy Child to Confident Prayer Leader",
                 category: "Transformation Story",
                 date: "Nov 28, 2024",
-                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                image: "images/2027/9.png",
                 shortDesc: "Meet Sarah, a 12-year-old who transformed from a shy participant to a confident prayer leader through our mentorship programs.",
                 longDesc: "Sarah joined our Teens Empowerment Program in 2023 as a quiet, withdrawn girl who struggled to speak in public. Through consistent mentorship, character development classes, and prayer sessions, she discovered her gift in intercession. Today, Sarah leads the children's prayer team, organizes weekly prayer meetings, and has become a role model for younger children. Her mother testified, 'The change in Sarah is miraculous; she now leads family devotions and encourages her siblings.'"
             },
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Partnership Expands School Outreach Impact",
                 category: "Ministry Update",
                 date: "Nov 10, 2024",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                image: "images/2023-2024/3.jpg",
                 shortDesc: "New partnership with Glow for Jesus Foundation enables us to reach 5 additional schools across Delta State in 2025.",
                 longDesc: "We are thrilled to announce a strategic partnership with Glow for Jesus Foundation, a faith-based organization dedicated to youth development. This collaboration will expand our School Outreach Initiative to five new schools in Delta State, reaching an estimated 800 students. The program will include weekly Bible clubs, career guidance, and mentorship from trained volunteers. Additionally, the partnership will provide school supplies and scholarships for 50 underprivileged children. We give God all the glory for this open door."
             }
@@ -235,10 +235,148 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+   function initHeroSlideshow() {
+    const container = document.querySelector('.slideshow-container');
+    if (!container) return;
+
+    const slides = container.querySelectorAll('.slide');
+    const dots = container.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let slideInterval = null;
+    const INTERVAL_TIME = 4500; // milliseconds between slides
+
+    // Safety check
+    if (slides.length === 0) return;
+
+    // ----- Show a specific slide -----
+    function goToSlide(index) {
+        // Clamp index
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        // Remove active class from all slides and dots
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+
+        currentIndex = index;
+    }
+
+    // ----- Next slide -----
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    // ----- Previous slide -----
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    // ----- Start auto-play -----
+    function startSlideshow() {
+        if (slideInterval) clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, INTERVAL_TIME);
+    }
+
+    // ----- Stop auto-play -----
+    function stopSlideshow() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
+    }
+
+    // ----- Dot click handlers -----
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            stopSlideshow();
+            goToSlide(index);
+            startSlideshow(); // restart timer after manual interaction
+        });
+    });
+
+    // ----- Pause on hover (better UX) -----
+    container.addEventListener('mouseenter', stopSlideshow);
+    container.addEventListener('mouseleave', startSlideshow);
+
+    // ----- Touch / swipe support for mobile -----
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) { // minimum swipe distance
+            stopSlideshow();
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            startSlideshow();
+        }
+    }, { passive: true });
+
+    // ----- Keyboard navigation (optional) -----
+    document.addEventListener('keydown', (e) => {
+        // Only if hero is in viewport
+        const rect = container.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isVisible) return;
+
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        }
+    });
+
+    // ----- Initialize -----
+    goToSlide(0);
+    startSlideshow();
+
+    // Return API for potential external control
+    return {
+        goToSlide,
+        nextSlide,
+        prevSlide,
+        startSlideshow,
+        stopSlideshow
+    };
+}
+
+// ----- Initialize the hero slideshow -----
+const heroSlideshow = initHeroSlideshow();
+
+// ----- Optional: Pause slideshow when page is hidden (performance) -----
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        if (heroSlideshow) heroSlideshow.stopSlideshow();
+    } else {
+        if (heroSlideshow) heroSlideshow.startSlideshow();
+    }
+}); 
+
     // ----- Initialize All Features -----
     initCounters();
     loadExpandableNews();   // This now renders the expandable cards
     initLazyLoading();
+
+
+
 });
 
 // ===== Global Helper Functions =====
