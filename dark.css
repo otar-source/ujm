@@ -268,7 +268,7 @@ body.dark-mode .dark-mode-toggle {
 
     /* Keep the icon proportionate */
     .logo-icon {
-        width: 34px;
+        width: 52px !important;
         height: 34px;
         font-size: 0.8rem;
         margin-bottom: 0 !important;
@@ -285,22 +285,17 @@ body.dark-mode .dark-mode-toggle {
         gap: 5px;
     }
 }
-/* ===== LOGO IMAGE – MATCHES EXISTING ICON ===== */
 
-/* Default size – matches .logo-icon (45px) */
 .logo-image {
     width: 45px;
     height: 45px;
-    object-fit: contain;     /* Ensures the image scales nicely inside */
+    object-fit:contain;     
     display: block;
-    flex-shrink: 0;          /* Prevents squishing in flex */
-    border-radius: 50%;      /* Optional: makes it circular like the old icon */
-    /* Remove border-radius if your logo is rectangular */
+    flex-shrink: 0;         
+    border-radius: 50%;     
+    
 }
 
-/* ===== RESPONSIVE SIZING – FOLLOWS EXISTING BREAKPOINTS ===== */
-
-/* Large screens (1024px–1199px) – matches existing .logo-icon */
 @media (max-width: 1199px) and (min-width: 1024px) {
     .logo-image {
         width: 42px;

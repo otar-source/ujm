@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "From Shy Child to Confident Prayer Leader",
                 category: "Transformation Story",
                 date: "Nov 28, 2024",
-                image: "images/2027/9.png",
+                image: "images/2026/9.png",
                 shortDesc: "Meet Sarah, a 12-year-old who transformed from a shy participant to a confident prayer leader through our mentorship programs.",
                 longDesc: "Sarah joined our Teens Empowerment Program in 2023 as a quiet, withdrawn girl who struggled to speak in public. Through consistent mentorship, character development classes, and prayer sessions, she discovered her gift in intercession. Today, Sarah leads the children's prayer team, organizes weekly prayer meetings, and has become a role model for younger children. Her mother testified, 'The change in Sarah is miraculous; she now leads family devotions and encourages her siblings.'"
             },
