@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Get Involved | Uncle Jeremy Ministries</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="dark.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="dark.css" />
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -19,12 +19,12 @@
 
         :root {
             --primary: #e63946;
-            --primary-light: #ff6b6b; 
-            --primary-dark: #c1121f; 
-            --secondary: #f77f00; 
-            --secondary-light: #ff9e5e; 
+            --primary-light: #ff6b6b;
+            --primary-dark: #c1121f;
+            --secondary: #f77f00;
+            --secondary-light: #ff9e5e;
             --secondary-dark: #d56f00;
-            --accent: #ff9e00; 
+            --accent: #ff9e00;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
@@ -56,7 +56,10 @@
         }
 
         /* Typography */
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             line-height: 1.2;
@@ -114,7 +117,6 @@
         .text-center {
             text-align: center;
         }
-
         .text-center h2:after {
             left: 50%;
             transform: translateX(-50%);
@@ -138,7 +140,6 @@
             overflow: hidden;
             z-index: 1;
         }
-
         .btn:before {
             content: '';
             position: absolute;
@@ -146,45 +147,38 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
             z-index: -1;
         }
-
         .btn:hover:before {
             left: 100%;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             box-shadow: var(--shadow);
         }
-
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
         }
-
         .btn-secondary {
             background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
             box-shadow: var(--shadow);
         }
-
         .btn-secondary:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             background: linear-gradient(135deg, var(--secondary-dark), #e68a00);
         }
-
         .btn-outline {
             background: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
         }
-
         .btn-outline:hover {
             background: var(--primary);
             color: white;
@@ -204,19 +198,16 @@
             padding: 15px 0;
             transition: var(--transition);
         }
-
         .navbar.scrolled {
             padding: 10px 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -232,9 +223,9 @@
         .logo:hover {
             transform: scale(1.05);
         }
-
         .logo-icon {
-            width: 45px;
+            padding: 6px;
+            width: 55px;
             height: 45px;
             background: white;
             border-radius: 50%;
@@ -244,8 +235,14 @@
             color: white;
             font-size: 1rem;
             box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            flex-shrink: 0;
         }
-
+        .logo-icon img {
+            width: 96%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
         .logo small {
             font-size: 0.75rem;
             color: var(--gray);
@@ -260,7 +257,6 @@
             gap: 30px;
             align-items: center;
         }
-
         .nav-menu a {
             color: var(--dark);
             font-weight: 600;
@@ -272,17 +268,14 @@
             border-radius: 50px;
             transition: var(--transition);
         }
-
         .nav-menu a:hover {
             color: var(--primary);
             background: rgba(230, 57, 70, 0.05);
         }
-
         .nav-menu a.active {
             color: var(--primary);
             background: rgba(230, 57, 70, 0.1);
         }
-
         .nav-menu a.active:after {
             content: '';
             position: absolute;
@@ -294,7 +287,6 @@
             background: var(--primary);
             border-radius: 50%;
         }
-
         .cta-btn-nav {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white !important;
@@ -304,14 +296,12 @@
             font-size: 12px;
             display: flex;
         }
-
         .cta-btn-nav:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
             background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
-              color: var(--primary) !important;
+            color: var(--primary) !important;
         }
-
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -322,7 +312,6 @@
             padding: 8px;
             z-index: 1001;
         }
-
         .bar {
             width: 28px;
             height: 3px;
@@ -331,10 +320,28 @@
             transition: var(--transition);
         }
 
-        /* Hero Section */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 50px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dark-mode-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: scale(1.05);
+        }
+
+        /* Hero */
         .involved-hero {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
-                        url('images/carolcell2.png');
+                url('images/carolcell2.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -344,7 +351,6 @@
             overflow: hidden;
             text-align: center;
         }
-
         .involved-hero:before {
             content: '';
             position: absolute;
@@ -352,23 +358,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                        rgba(230, 57, 70, 0.1) 0%,
-                        rgba(247, 127, 0, 0.1) 50%,
-                        rgba(255, 158, 0, 0.05) 100%);
+            background: linear-gradient(135deg,
+                    rgba(230, 57, 70, 0.1) 0%,
+                    rgba(247, 127, 0, 0.1) 50%,
+                    rgba(255, 158, 0, 0.05) 100%);
             z-index: 1;
         }
-
         .involved-hero .container {
             position: relative;
             z-index: 2;
         }
-
         .involved-hero h1 {
             font-size: 3.8rem;
             margin-bottom: 1.5rem;
         }
-
         .involved-hero p {
             font-size: 1.3rem;
             max-width: 800px;
@@ -376,38 +379,33 @@
             color: var(--gray);
         }
 
-        /* Section Styling */
+        /* Sections */
         .section-padding {
             padding: 80px 0;
         }
-
         .bg-light {
             background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
-
         .section-header h2 {
             display: inline-block;
             margin-bottom: 20px;
         }
-
         .section-header p {
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.2rem;
         }
 
-        /* Cards Grid */
+        /* Cards */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
         .card {
             background: white;
             border-radius: var(--radius-lg);
@@ -419,7 +417,6 @@
             overflow: hidden;
             text-align: center;
         }
-
         .card:before {
             content: '';
             position: absolute;
@@ -429,18 +426,15 @@
             height: 5px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
         }
-
         .card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-xl);
             border-color: var(--primary-light);
         }
-
         .card.featured {
             border: 3px solid var(--primary);
             box-shadow: var(--shadow-lg);
         }
-
         .card-icon {
             width: 80px;
             height: 80px;
@@ -454,58 +448,52 @@
             color: white;
             transition: var(--transition);
         }
-
         .card:hover .card-icon {
             transform: scale(1.1) rotate(5deg);
         }
-
         .card h3 {
             margin-bottom: 15px;
             color: var(--primary-dark);
         }
-
         .card .price {
             font-size: 2rem;
             font-weight: 700;
             color: var(--primary);
             margin: 20px 0;
         }
-
         .card ul {
             list-style: none;
             margin: 25px 0;
             text-align: left;
         }
-
         .card ul li {
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .card ul li i {
             color: var(--primary);
             width: 20px;
         }
-
         .card .btn {
             width: 100%;
             margin-top: 20px;
         }
 
-        /* Volunteer Form (Static) */
+        /* ===== VOLUNTEER FORM – FULLY RESPONSIVE ===== */
         .volunteer-form {
-            max-width: 700px;
+            max-width: 720px;
             margin: 40px auto 0;
             background: white;
-            padding: 40px;
+            padding: 48px 44px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
+            transition: var(--transition);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group label {
@@ -513,17 +501,23 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--dark);
+            font-size: 0.98rem;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 16px;
+            padding: 14px 18px;
             border: 2px solid var(--light-gray);
             border-radius: var(--radius);
             font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
             transition: var(--transition);
+            background: #fff;
+            color: var(--dark);
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-group input:focus,
@@ -534,20 +528,89 @@
             box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
         }
 
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Checkbox Group: responsive grid --- */
         .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px 16px;
+            padding: 4px 0;
         }
 
         .checkbox-group label {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: normal;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 8px 12px 8px 8px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            background: var(--light);
+            border: 2px solid transparent;
+            min-height: 48px;
+            /* touch-friendly */;
         }
 
-        /* Donation Details */
+        .checkbox-group label:hover {
+            background: rgba(230, 57, 70, 0.06);
+            border-color: var(--primary-light);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin: 0;
+            border-radius: 4px;
+            border: 2px solid var(--gray);
+            transition: var(--transition);
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            border-color: var(--primary);
+        }
+
+        .checkbox-group input[type="checkbox"]:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Small note under checkbox group */
+        .checkbox-hint {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 6px;
+            display: block;
+        }
+
+        .volunteer-form .btn {
+            width: 100%;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        .form-disclaimer {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 18px;
+            padding: 12px 16px;
+            background: var(--light);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Donation */
         .donation-details {
             background: white;
             border-radius: var(--radius-lg);
@@ -555,14 +618,12 @@
             box-shadow: var(--shadow-lg);
             margin-top: 40px;
         }
-
         .payment-methods {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
         .method {
             text-align: center;
             padding: 25px;
@@ -570,34 +631,28 @@
             border-radius: var(--radius);
             transition: var(--transition);
         }
-
         .method:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
-
         .method i {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 15px;
         }
-
         .method h4 {
             margin-bottom: 10px;
             color: var(--primary-dark);
         }
-
         .method p {
             margin-bottom: 5px;
         }
-
         .qr-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 40px;
         }
-
         .qr-code {
             width: 180px;
             height: 180px;
@@ -609,14 +664,12 @@
             justify-content: center;
             margin-bottom: 15px;
         }
-
         .qr-code img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             padding: 10px;
         }
-
         .qr-note {
             font-size: 0.9rem;
             color: var(--gray);
@@ -629,7 +682,6 @@
             padding: 100px 0 30px;
             position: relative;
         }
-
         .footer:before {
             content: '';
             position: absolute;
@@ -639,55 +691,55 @@
             height: 5px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 60px;
             margin-bottom: 80px;
         }
-
         .footer-col {
             position: relative;
         }
-
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
+          width: 55px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
         }
+        .footer-logo-icon  img{
+            object-fit: contain;
+                width: 50px;
+    height: 35px;
 
+        }
         .footer-logo h3 {
             color: white;
             margin-bottom: 0;
             font-size: 1.6rem;
         }
-
         .footer-col p {
             color: #b0b0b0;
             margin-bottom: 25px;
             line-height: 1.7;
         }
-
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
-
         .social-link {
             width: 45px;
             height: 45px;
@@ -700,12 +752,10 @@
             color: white;
             font-size: 1.2rem;
         }
-
         .social-link:hover {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             transform: translateY(-3px) rotate(5deg);
         }
-
         .footer-col h4 {
             color: white;
             margin-bottom: 30px;
@@ -713,7 +763,6 @@
             position: relative;
             padding-bottom: 15px;
         }
-
         .footer-col h4:after {
             content: '';
             position: absolute;
@@ -723,15 +772,12 @@
             height: 3px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 15px;
         }
-
         .footer-links a {
             color: #b0b0b0;
             display: flex;
@@ -739,18 +785,15 @@
             gap: 12px;
             transition: var(--transition);
         }
-
         .footer-links a:hover {
             color: white;
             padding-left: 8px;
             color: var(--primary-light);
         }
-
         .footer-links i {
             color: var(--primary);
             font-size: 0.8rem;
         }
-
         .contact-info p {
             display: flex;
             align-items: center;
@@ -758,13 +801,11 @@
             margin-bottom: 18px;
             color: #b0b0b0;
         }
-
         .contact-info i {
             color: var(--primary);
             width: 25px;
             font-size: 1.1rem;
         }
-
         .footer-bottom {
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -772,18 +813,16 @@
             color: #b0b0b0;
             font-size: 0.95rem;
         }
-
         .footer-bottom p {
             margin-bottom: 10px;
             color: #b0b0b0;
         }
-
         .footer-bottom i {
             color: var(--primary);
             margin: 0 5px;
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -792,10 +831,16 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
             .navbar {
                 padding: 12px 0;
             }
+
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -842,69 +887,197 @@
             .menu-toggle.active .bar:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
             }
+
             .involved-hero {
                 padding: 150px 0 80px;
             }
             .involved-hero h1 {
                 font-size: 2.5rem;
             }
-            .volunteer-form {
-                padding: 30px 20px;
+            .involved-hero p {
+                font-size: 1.1rem;
             }
+
+            /* —— Volunteer Form Mobile —— */
+            .volunteer-form {
+                padding: 28px 18px;
+                margin: 30px 10px 0;
+                border-radius: var(--radius);
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.9rem;
+                padding: 10px 12px 10px 10px;
+                min-height: 44px;
+                border-radius: 8px;
+            }
+
+            .checkbox-group input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                min-width: 18px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 14px;
+                font-size: 0.95rem;
+            }
+
+            .volunteer-form .btn {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+
+            .donation-details {
+                padding: 24px 16px;
+            }
+            .payment-methods {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+
+            .qr-code {
+                width: 150px;
+                height: 150px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 15px;
+                padding: 0 14px;
             }
             .involved-hero h1 {
                 font-size: 2rem;
             }
+            .involved-hero p {
+                font-size: 1rem;
+            }
+            .section-header h2 {
+                font-size: 1.7rem;
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            /* —— Checkboxes: single column on very small screens —— */
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.88rem;
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+
+            .volunteer-form {
+                padding: 20px 14px;
+                margin: 20px 4px 0;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+            .form-group label {
+                font-size: 0.9rem;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 11px 12px;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+
+            .card {
+                padding: 28px 18px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-details {
+                padding: 18px 12px;
+            }
+            .method {
+                padding: 18px 14px;
+            }
+
+            /* Logo squeeze */
+            .logo {
+                flex-direction: row !important;
+                gap: 8px;
+                text-align: left;
+                font-size: 1.2rem;
+            }
+            .logo .text {
+                font-size: 18px;
+                line-height: 1.2;
+                white-space: nowrap;
+            }
+            .logo small {
+                display: none !important;
+            }
+            .logo-icon {
+                width: 36px;
+                height: 32px;
+                font-size: 0.8rem;
+                margin-bottom: 0 !important;
+            }
+            .menu-toggle .bar {
+                width: 22px;
+                height: 2px;
+            }
+            .nav-container {
+                gap: 5px;
+            }
+            .dark-mode-toggle {
+                font-size: 1.2rem;
+                padding: 4px 8px;
+            }
         }
-        @media (max-width: 420px) {
-    /* Force logo to stay horizontal, hide long text */
-    .logo {
-        flex-direction: row !important;
-        gap: 8px;
-        text-align: left;
-        font-size: 1.2rem;
-    }
 
-    /* Keep "UJM" visible and properly sized */
-    .logo .text {
-        font-size: 18px;
-        line-height: 1.2;
-        white-space: nowrap;
-    }
-
-    /* Hide the full name/subtitle (e.g., "United...") */
-    .logo small {
-        display: none !important;
-    }
-
-    /* Smaller icon to match */
-    .logo-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
-        margin-bottom: 0 !important;
-    }
-
-    /* Tweak the hamburger menu button so it doesn't overlap */
-    .menu-toggle .bar {
-        width: 22px;
-        height: 2px;
-    }
-
-    /* Keep the nav container tight */
-    .nav-container {
-        gap: 5px;
-    }
-}
+        @media (max-width: 380px) {
+            .volunteer-form {
+                padding: 16px 10px;
+                margin: 16px 2px 0;
+                border-radius: 6px;
+            }
+            .checkbox-group label {
+                font-size: 0.82rem;
+                padding: 8px 10px;
+                min-height: 40px;
+                gap: 8px;
+            }
+            .checkbox-group input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
+                min-width: 16px;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 10px;
+                font-size: 0.85rem;
+            }
+            .volunteer-form .btn {
+                padding: 12px 18px;
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -913,22 +1086,22 @@
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo" class="logo-image" />
                 </div>
                 <div>
                     <span class="text">Uncle Jeremy Ministries</span>
-                <small class="smlogo">Raising Children in Christ Through Love, Teaching and Impact</small>
+                    <small class="smlogo">Raising Children in Christ Through Love, Teaching and Impact</small>
                 </div>
             </a>
-                     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
-    <i class="fas fa-moon"></i>
-</button>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
             <button class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            
+
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
@@ -939,7 +1112,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="involved-hero">
         <div class="container">
             <h1>Get Involved</h1>
@@ -955,11 +1128,8 @@
                 <p>Choose how you'd like to be part of this movement</p>
             </div>
             <div class="cards-grid">
-                <!-- Volunteer Card -->
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
                     <h3>Volunteer</h3>
                     <p>Give your time and skills to impact children directly.</p>
                     <ul>
@@ -971,11 +1141,8 @@
                     <a href="#volunteer-form" class="btn btn-primary">Sign Up to Volunteer</a>
                 </div>
 
-                <!-- Financial Partner Card-->
                 <div class="card featured">
-                    <div class="card-icon">
-                        <i class="fas fa-donate"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-donate"></i></div>
                     <h3>Financial Partner</h3>
                     <div class="price">Any Amount</div>
                     <p>Your generous donations help us reach more children with the Gospel.</p>
@@ -986,11 +1153,8 @@
                     <a href="#donate" class="btn btn-primary">Give Now</a>
                 </div>
 
-                <!-- Fundraising Support Card -->
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Fundraising Support</h3>
                     <p>Help us raise resources by involving your network.</p>
                     <ul>
@@ -1005,51 +1169,88 @@
         </div>
     </section>
 
-    <!-- Volunteer Application Form -->
+    <!-- ===== VOLUNTEER APPLICATION FORM (FIXED) ===== -->
     <section id="volunteer-form" class="section-padding bg-light">
         <div class="container">
             <div class="section-header">
                 <h2>Volunteer Application</h2>
                 <p>Fill the form below to express your interest. We'll get back to you shortly.</p>
             </div>
+
             <div class="volunteer-form">
                 <form action="https://formspree.io/f/xzdaawnv" method="POST">
+                    <!-- Full Name -->
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="Name" required>
+                        <input type="text" id="name" name="Name" required placeholder="e.g. John Doe" />
                     </div>
+
+                    <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="Email" required>
+                        <input type="email" id="email" name="Email" required placeholder="john@example.com" />
                     </div>
+
+                    <!-- Phone -->
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="Phone" required>
+                        <input type="tel" id="phone" name="Phone" required placeholder="080 1234 5678" />
                     </div>
+
+                    <!-- Area of Interest / Gifts (CHECKBOXES – RESPONSIVE) -->
                     <div class="form-group">
                         <label for="gift">Area of Interest / Gifts *</label>
                         <div class="checkbox-group">
-                            <label><input type="checkbox" name="Interest" value="Outreach Events"> Outreach Events</label>
-                            <label><input type="checkbox" name="Interest" value="School Visitations"> School Visitations</label>
-                            <label><input type="checkbox" name="Interest" value="Prayer Team"> Prayer Team</label>
-                            <label><input type="checkbox" name="Interest" value="Mentorship"> Mentorship</label>
-                            <label><input type="checkbox" name="Interest" value="Fundraising"> Fundraising</label>
-                            <label><input type="checkbox" name="Interest" value="Administration"> Administration</label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="Outreach Events" />
+                                Outreach Events
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="School Visitations" />
+                                School Visitations
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="Prayer Team" />
+                                Prayer Team
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="Mentorship" />
+                                Mentorship
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="Fundraising" />
+                                Fundraising
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Interest" value="Administration" />
+                                Administration
+                            </label>
                         </div>
+                        <span class="checkbox-hint"><i class="fas fa-info-circle"></i> Select all that apply</span>
                     </div>
+
+                    <!-- Message -->
                     <div class="form-group">
                         <label for="message">Why do you want to volunteer?</label>
-                        <textarea id="message" name="Message" rows="4"></textarea>
+                        <textarea id="message" name="Message" rows="4" placeholder="Share a few words about your heart for children and how you'd like to serve..."></textarea>
                     </div>
-                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 20px;">By submitting this form, you agree to be contacted by our team.</p>
-                    <button type="submit" class="btn btn-primary">Submit Application</button>
+
+                    <!-- Disclaimer -->
+                    <div class="form-disclaimer">
+                        <i class="fas fa-shield-alt" style="color: var(--primary); margin-right: 8px;"></i>
+                        By submitting this form, you agree to be contacted by our team.
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
                 </form>
-               
             </div>
         </div>
     </section>
 
-    <!-- Donation & Payment Details -->
+    <!-- Donation -->
     <section id="donate" class="section-padding">
         <div class="container">
             <div class="section-header">
@@ -1082,8 +1283,7 @@
                 <div class="qr-section">
                     <h3>Quick Volunteer Sign-Up</h3>
                     <div class="qr-code">
-                        <!-- QR code image -->
-                        <img src="images/qrcode.png" alt="QR Code for volunteer sign-up">
+                        <img src="images/qrcode.png" alt="QR Code for volunteer sign-up" />
                     </div>
                     <p class="qr-note">Scan to sign up as a volunteer via our quick form: <a href="https://bit.ly/3GwxbJs" target="_blank">https://bit.ly/3GwxbJs</a></p>
                 </div>
@@ -1091,7 +1291,7 @@
         </div>
     </section>
 
-    <!-- Contact Information -->
+    <!-- Contact -->
     <section class="section-padding bg-light">
         <div class="container">
             <div class="section-header">
@@ -1099,7 +1299,7 @@
                 <p>Reach out to us directly</p>
             </div>
             <div style="text-align: center; font-size: 1.3rem;">
-                <p><i class="fas fa-phone-alt" style="color: var(--primary);"></i> <strong>Call or Text:</strong> <a href="tel:+2348161549921">08161549921</a>  |  <a href="tel:+2349130202918">09130202918</a></p>
+                <p><i class="fas fa-phone-alt" style="color: var(--primary);"></i> <strong>Call or Text:</strong> <a href="tel:+2348161549921">08161549921</a> | <a href="tel:+2349130202918">09130202918</a></p>
                 <p><i class="fas fa-envelope" style="color: var(--primary);"></i> <strong>Email:</strong> <a href="mailto:unclejeremy97@gmail.com">unclejeremy97@gmail.com</a></p>
                 <div style="margin-top: 30px;">
                     <a href="https://wa.me/2348161549921" class="btn btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
@@ -1114,9 +1314,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
+                        <div class="footer-logo-icon"><img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"></div>
                         <h3>Uncle Jeremy Ministries</h3>
                     </div>
                     <p>Transforming children's lives through Bible-based teaching, character development, and community support since 2021.</p>
@@ -1162,7 +1360,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- Scripts -->
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -1177,13 +1375,10 @@
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
-
         mobileMenu.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -1193,7 +1388,7 @@
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1201,37 +1396,34 @@
                 }
             });
         });
-// ===== DARK MODE TOGGLE =====
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const icon = toggleBtn.querySelector('i');
-    const body = document.body;
 
-    // Check for saved preference
-    const currentMode = localStorage.getItem('darkMode');
-    if (currentMode === 'enabled') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn.querySelector('i');
+            const body = document.body;
 
-    // Toggle on click
-    toggleBtn.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        const isDark = body.classList.contains('dark-mode');
-        
-        // Update icon
-        if (isDark) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    });
-});
+            const currentMode = localStorage.getItem('darkMode');
+            if (currentMode === 'enabled') {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+
+            toggleBtn.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        });
     </script>
 </body>
 </html>

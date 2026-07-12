@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Our Programs | Uncle Jeremy Ministries</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts -->
-     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="dark.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="dark.css" />
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -21,12 +21,12 @@
 
         :root {
             --primary: #e63946;
-            --primary-light: #ff6b6b; 
-            --primary-dark: #c1121f; 
-            --secondary: #f77f00; 
-            --secondary-light: #ff9e5e; 
+            --primary-light: #ff6b6b;
+            --primary-dark: #c1121f;
+            --secondary: #f77f00;
+            --secondary-light: #ff9e5e;
             --secondary-dark: #d56f00;
-            --accent: #ff9e00; 
+            --accent: #ff9e00;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
@@ -58,7 +58,10 @@
         }
 
         /* Typography */
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             line-height: 1.2;
@@ -148,7 +151,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
             z-index: -1;
         }
@@ -180,6 +183,16 @@
             color: white;
             transform: translateY(-3px);
             box-shadow: var(--shadow);
+        }
+
+        .btn-small {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1.2rem;
         }
 
         /* Navigation */
@@ -224,7 +237,8 @@
         }
 
         .logo-icon {
-            width: 45px;
+            padding: 6px;
+            width: 55px;
             height: 45px;
             background: white;
             border-radius: 50%;
@@ -234,6 +248,13 @@
             color: white;
             font-size: 1rem;
             box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            flex-shrink: 0;
+        }
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
         }
 
         .logo small {
@@ -321,18 +342,36 @@
             transition: var(--transition);
         }
 
-        /* Hero Section */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 50px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dark-mode-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: scale(1.05);
+        }
+
+        /* ===== HERO SECTION – FULLY RESPONSIVE ===== */
         .programs-hero {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 248, 0.9)),
-                        url('images/carolcell2.png');
+                url('images/carolcell2.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             padding: 180px 0 120px;
             margin-top: 70px;
             position: relative;
             overflow: hidden;
             text-align: center;
+            /* mobile-safe: no fixed attachment */;
         }
 
         .programs-hero:before {
@@ -342,10 +381,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                        rgba(230, 57, 70, 0.1) 0%,
-                        rgba(247, 127, 0, 0.1) 50%,
-                        rgba(255, 158, 0, 0.05) 100%);
+            background: linear-gradient(135deg,
+                    rgba(230, 57, 70, 0.1) 0%,
+                    rgba(247, 127, 0, 0.1) 50%,
+                    rgba(255, 158, 0, 0.05) 100%);
             z-index: 1;
         }
 
@@ -366,7 +405,7 @@
             color: var(--gray);
         }
 
-        /* Section Styling */
+        /* Sections */
         .section-padding {
             padding: 80px 0;
         }
@@ -517,11 +556,211 @@
             font-weight: 500;
         }
 
-        .program-footer {
+        /* ===== EVENTS & NEWS – FULLY RESPONSIVE ===== */
+        .events-news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .column-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
+        }
+
+        .column-title i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        /* Events List */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .event-item {
+            display: flex;
+            gap: 20px;
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            align-items: flex-start;
+        }
+
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .event-date-badge {
+            min-width: 80px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .event-day {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .event-year {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .event-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .event-details h4 {
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .event-theme {
+            font-style: italic;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .event-meta i {
+            color: var(--primary);
+            width: 16px;
+            margin-right: 5px;
+        }
+
+        /* News Items */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .news-image {
+            width: 120px;
+            min-height: 120px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-content {
+            padding: 15px 15px 15px 0;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .news-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-date i {
+            color: var(--primary);
+        }
+
+        .view-all-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .view-all-link:hover {
+            color: var(--primary-dark);
+            gap: 12px;
         }
 
         /* Footer */
@@ -561,7 +800,8 @@
         }
 
         .footer-logo-icon {
-            width: 50px;
+            padding: 6px;
+            width: 55px;
             height: 50px;
             background: white;
             border-radius: 50%;
@@ -570,6 +810,14 @@
             justify-content: center;
             font-size: 1.8rem;
             color: white;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .footer-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
         }
 
         .footer-logo h3 {
@@ -588,6 +836,7 @@
             display: flex;
             gap: 15px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -685,7 +934,10 @@
             margin: 0 5px;
         }
 
-        /* Responsive */
+        /* ================================================================
+                   RESPONSIVE BREAKPOINTS
+                   ================================================================ */
+
         @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -694,10 +946,16 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
             .navbar {
                 padding: 12px 0;
             }
+
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -744,316 +1002,252 @@
             .menu-toggle.active .bar:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
             }
+
+            /* Hero */
             .programs-hero {
                 padding: 150px 0 80px;
             }
             .programs-hero h1 {
                 font-size: 2.5rem;
             }
-            .footer-grid {
+            .programs-hero p {
+                font-size: 1.1rem;
+            }
+
+            /* Programs grid: 2 columns on tablet */
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 20px;
+            }
+
+            /* ===== EVENTS & NEWS: stack on tablet ===== */
+            .events-news-grid {
                 grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .event-item {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                padding: 16px;
+            }
+
+            .event-date-badge {
+                min-width: 70px;
+                width: 70px;
+                height: 70px;
+            }
+            .event-day {
+                font-size: 1.6rem;
+            }
+            .event-month {
+                font-size: 0.8rem;
+            }
+            .event-year {
+                font-size: 0.75rem;
+            }
+
+            .event-meta {
+                justify-content: flex-start;
+            }
+
+            .news-item {
+                flex-direction: row;
+            }
+            .news-image {
+                width: 100px;
+                min-height: 100px;
+            }
+            .news-content {
+                padding: 12px 12px 12px 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
                 gap: 40px;
+            }
+
+            /* Logo tweak for tablet */
+            .logo .text {
+                font-size: 18px;
+            }
+            .logo small {
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 480px) {
-              .logo {
-        flex-direction: column;      
-        text-align: center;
-    }
-    .logo-icon {
-        margin-bottom: 5px;        
-    }
             .container {
-                padding: 0 15px;
+                padding: 0 14px;
             }
+
             .programs-hero h1 {
                 font-size: 2rem;
             }
+            .programs-hero p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.7rem;
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            /* Programs: single column on small */
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .program-card {
+                border-radius: var(--radius);
+            }
+            .program-content {
+                padding: 0 18px 22px;
+            }
+            .program-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 2rem;
+                margin: 20px auto 12px;
+            }
+
+            /* ===== EVENTS: stack vertically on small ===== */
+            .event-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 18px 14px;
+            }
+
+            .event-date-badge {
+                min-width: 70px;
+                width: 70px;
+                height: 70px;
+                margin-bottom: 10px;
+            }
+
+            .event-meta {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .event-details h4 {
+                font-size: 1.1rem;
+            }
+
+            /* ===== NEWS: stack vertically on small ===== */
+            .news-item {
+                flex-direction: column;
+            }
+            .news-image {
+                width: 100%;
+                height: 140px;
+                min-height: 140px;
+            }
+            .news-content {
+                padding: 14px 16px;
+            }
+
+            .column-title {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+            .column-title i {
+                font-size: 1.6rem;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-logo h3 {
+                font-size: 1.3rem;
+            }
+
+            /* ===== LOGO: forced horizontal, hide subtitle ===== */
+            .logo {
+                flex-direction: row !important;
+                gap: 8px;
+                text-align: left;
+                font-size: 1.2rem;
+            }
+            .logo .text {
+                font-size: 17px;
+                line-height: 1.2;
+                white-space: nowrap;
+            }
+            .logo small {
+                display: none !important;
+            }
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+                margin-bottom: 0 !important;
+            }
+
+            .menu-toggle .bar {
+                width: 22px;
+                height: 2px;
+            }
+            .nav-container {
+                gap: 5px;
+            }
+            .dark-mode-toggle {
+                font-size: 1.2rem;
+                padding: 4px 8px;
+            }
+
+            .btn-small {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
         }
-        /* Events & News Section */
-.events-news-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 40px;
-}
 
-.column-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    color: var(--primary-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.column-title i {
-    color: var(--primary);
-    font-size: 2rem;
-}
-
-/* Event Items */
-.events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.event-item {
-    display: flex;
-    gap: 20px;
-    background: white;
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 1px solid transparent;
-}
-
-.event-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-light);
-}
-
-.event-date-badge {
-    min-width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    box-shadow: var(--shadow);
-}
-
-.event-day {
-    font-size: 2rem;
-    line-height: 1;
-}
-
-.event-month {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-.event-year {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-.event-details {
-    flex: 1;
-}
-
-.event-details h4 {
-    margin-bottom: 5px;
-    font-size: 1.3rem;
-}
-
-.event-theme {
-    font-style: italic;
-    color: var(--primary-dark);
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-}
-
-.event-meta {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.event-meta i {
-    color: var(--primary);
-    width: 16px;
-    margin-right: 5px;
-}
-
-.btn-small {
-    padding: 8px 18px;
-    font-size: 0.9rem;
-}
-
-/* News Items */
-.news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.news-item {
-    display: flex;
-    gap: 20px;
-    background: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 1px solid transparent;
-}
-
-.news-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-light);
-}
-
-.news-image {
-    width: 120px;
-    flex-shrink: 0;
-}
-
-.news-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.news-content {
-    padding: 15px 15px 15px 0;
-}
-
-.news-category {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 3px 12px;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.news-content h4 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    color: var(--dark);
-}
-
-.news-excerpt {
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin-bottom: 8px;
-    line-height: 1.4;
-}
-
-.news-date {
-    font-size: 0.8rem;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.news-date i {
-    color: var(--primary);
-}
-
-.view-all-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--primary);
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.view-all-link:hover {
-    color: var(--primary-dark);
-    gap: 8px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-      .logo {
-        gap: 8px;                  
-        font-size: 1.2rem;         
-    }
-    .logo .text {
-        font-size: 16px;           
-    }
-    .logo small {
-        font-size: 0.65rem;         
-    }
-    .events-news-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .event-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .event-meta {
-        justify-content: center;
-    }
-    
-    .news-item {
-        flex-direction: column;
-    }
-    
-    .news-image {
-        width: 100%;
-        height: 150px;
-    }
-    
-    .news-content {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 420px) {
-    /* Force logo to stay horizontal, hide long text */
-    .logo {
-        flex-direction: row !important;
-        gap: 8px;
-        text-align: left;
-        font-size: 1.2rem;
-    }
-
-    /* Keep "UJM" visible and properly sized */
-    .logo .text {
-        font-size: 18px;
-        line-height: 1.2;
-        white-space: nowrap;
-    }
-
-    /* Hide the full name/subtitle (e.g., "United...") */
-    .logo small {
-        display: none !important;
-    }
-
-    /* Smaller icon to match */
-    .logo-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
-        margin-bottom: 0 !important;
-    }
-
-    /* Tweak the hamburger menu button so it doesn't overlap */
-    .menu-toggle .bar {
-        width: 22px;
-        height: 2px;
-    }
-
-    /* Keep the nav container tight */
-    .nav-container {
-        gap: 5px;
-    }
-}
-    </style> 
-
+        @media (max-width: 380px) {
+            .programs-hero {
+                padding: 130px 0 60px;
+            }
+            .programs-hero h1 {
+                font-size: 1.7rem;
+            }
+            .event-date-badge {
+                min-width: 60px;
+                width: 60px;
+                height: 60px;
+            }
+            .event-day {
+                font-size: 1.3rem;
+            }
+            .event-month {
+                font-size: 0.7rem;
+            }
+            .event-year {
+                font-size: 0.65rem;
+            }
+            .event-item {
+                padding: 14px 10px;
+            }
+            .news-image {
+                height: 120px;
+                min-height: 120px;
+            }
+            .program-content {
+                padding: 0 12px 18px;
+            }
+            .program-details {
+                padding: 12px;
+            }
+            .detail-item {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -1061,23 +1255,23 @@
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                        <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
+                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo" class="logo-image" />
                 </div>
                 <div>
                     <span class="text">Uncle Jeremy Ministries</span>
-                <small class="smlogo">Raising Children in Christ Through Love, Teaching and Impact</small>
+                    <small class="smlogo">Raising Children in Christ Through Love, Teaching and Impact</small>
                 </div>
             </a>
-                     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
-    <i class="fas fa-moon"></i>
-</button>
-            
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+
             <button class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            
+
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
@@ -1088,7 +1282,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section – fully responsive, no fixed attachment -->
     <section class="programs-hero">
         <div class="container">
             <h1>Our Programs</h1>
@@ -1131,7 +1325,7 @@
                         <p class="program-description">Partnering with schools for character development, moral instruction, and spiritual mentorship.</p>
                         <div class="program-details">
                             <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Ongoing during term</div>
-                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> Primary & Secondary</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target Age:</strong> Primary &amp; Secondary</div>
                         </div>
                         <span class="impact-badge"><i class="fas fa-school"></i> 6 schools visited</span>
                         <div class="school-list">
@@ -1192,7 +1386,7 @@
                         <p class="program-description">Equipping parents with biblical principles and practical tools for raising godly children.</p>
                         <div class="program-details">
                             <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Frequency:</strong> Monthly sessions</div>
-                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target:</strong> Parents & Guardians</div>
+                            <div class="detail-item"><i class="fas fa-users"></i> <strong>Target:</strong> Parents &amp; Guardians</div>
                             <div class="detail-item"><i class="fas fa-book"></i> <strong>Topics:</strong> Discipline, faith, education</div>
                         </div>
                         <span class="impact-badge"><i class="fas fa-users"></i> 150+ parents reached</span>
@@ -1219,96 +1413,105 @@
         </div>
     </section>
 
-    <!-- Upcoming Events & News Section -->
-<section class="section-padding bg-light">
-    <div class="container">
-        <div class="section-header">
-            <h2>Upcoming Events & Latest News</h2>
-            <p>Stay updated with what's happening at Uncle Jeremy Ministries</p>
-        </div>
-        <div class="events-news-grid">
-            <!-- Left Column: Upcoming Events -->
-            <div class="events-column">
-                <h3 class="column-title"><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
-                <div class="events-list">
-                    <div class="event-item card-hover">
-                        <div class="event-date-badge">
-                            <span class="event-day">30</span>
-                            <span class="event-month">AUG</span>
-                            <span class="event-year">2025</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>JCCO 2025 – Rivers State</h4>
-                            <p class="event-theme">Theme: "Jesus, the Spirit-Filled Child" (Luke 2:40)</p>
-                            <div class="event-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> Port Harcourt</span>
-                                <span><i class="fas fa-clock"></i> 10:00 AM</span>
-                            </div>
-                            <a href="#" class="btn btn-outline btn-small">Register / Volunteer</a>
-                        </div>
-                    </div>
-                    <div class="event-item card-hover">
-                        <div class="event-date-badge">
-                            <span class="event-day">TBD</span>
-                            <span class="event-month"></span>
-                            <span class="event-year">2025</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>Children Prayer Conference</h4>
-                            <p class="event-theme">Date Under Review</p>
-                            <div class="event-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> Location TBA</span>
-                            </div>
-                            <a href="#" class="btn btn-outline btn-small">Get Notified</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="view-all-link">View All Events <i class="fas fa-arrow-right"></i></a>
+    <!-- ===== UPCOMING EVENTS & NEWS – FULLY RESPONSIVE ===== -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Events &amp; Latest News</h2>
+                <p>Stay updated with what's happening at Uncle Jeremy Ministries</p>
             </div>
 
-            <!-- Right Column: Latest News -->
-            <div class="news-column">
-                <h3 class="column-title"><i class="fas fa-newspaper"></i> Latest News</h3>
-                <div class="news-list">
-                    <div class="news-item card-hover">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop" alt="News thumbnail">
+            <div class="events-news-grid">
+                <!-- Left: Upcoming Events -->
+                <div class="events-column">
+                    <h3 class="column-title"><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                    <div class="events-list">
+                        <!-- Event 1 -->
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="event-day">30</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-year">2026</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>JCCO 2026 – Rivers State</h4>
+                                <p class="event-theme">Theme: "Jesus, the Spirit-Filled Child" (Luke 2:40)</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-map-marker-alt"></i> Port Harcourt</span>
+                                    <span><i class="fas fa-clock"></i> 10:00 AM</span>
+                                </div>
+                                <a href="#" class="btn btn-outline btn-small">Register / Volunteer</a>
+                            </div>
                         </div>
-                        <div class="news-content">
-                            <span class="news-category">Outreach Report</span>
-                            <h4>JCCO 2024 Impact Report Released</h4>
-                            <p class="news-excerpt">600+ children reached, 250 salvations recorded...</p>
-                            <span class="news-date"><i class="fas fa-clock"></i> March 15, 2024</span>
+
+                        <!-- Event 2 -->
+                        <div class="event-item">
+                            <div class="event-date-badge">
+                                <span class="event-day">TBD</span>
+                                <span class="event-month"></span>
+                                <span class="event-year">2025</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Children Prayer Conference</h4>
+                                <p class="event-theme">Date Under Review</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-map-marker-alt"></i> Location TBA</span>
+                                </div>
+                                <a href="#" class="btn btn-outline btn-small">Get Notified</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="news-item card-hover">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=400&h=300&fit=crop" alt="News thumbnail">
-                        </div>
-                        <div class="news-content">
-                            <span class="news-category">Testimony</span>
-                            <h4>"My Life Changed at JCCO" – Sarah, 12</h4>
-                            <p class="news-excerpt">How a young girl encountered Jesus and now leads her school prayer group...</p>
-                            <span class="news-date"><i class="fas fa-clock"></i> Feb 28, 2024</span>
-                        </div>
-                    </div>
-                    <div class="news-item card-hover">
-                        <div class="news-image">
-                            <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?w=400&h=300&fit=cropp" alt="News thumbnail">
-                        </div>
-                        <div class="news-content">
-                            <span class="news-category">Partnership</span>
-                            <h4>New School Partnership Announced</h4>
-                            <p class="news-excerpt">We've added 3 new schools to our outreach program...</p>
-                            <span class="news-date"><i class="fas fa-clock"></i> Feb 10, 2024</span>
-                        </div>
-                    </div>
+                    <a href="#" class="view-all-link">View All Events <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <a href="#" class="view-all-link">Read All News <i class="fas fa-arrow-right"></i></a>
+
+                <!-- Right: Latest News -->
+                <div class="news-column">
+                    <h3 class="column-title"><i class="fas fa-newspaper"></i> Latest News</h3>
+                    <div class="news-list">
+                        <!-- News 1 -->
+                        <div class="news-item">
+                            <div class="news-image">
+                                <img src="images/2026/47.png" alt="News thumbnail" />
+                            </div>
+                            <div class="news-content">
+                                <span class="news-category">Bible Study Report</span>
+                                <h4> 2026 Impact Report Released</h4>
+                                <p class="news-excerpt">600+ children reached, 250 salvations recorded...</p>
+                                <span class="news-date"><i class="fas fa-clock"></i> May 23, 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- News 2 -->
+                        <div class="news-item">
+                            <div class="news-image">
+                                <img src="images/2026/12.png" alt="News thumbnail" />
+                            </div>
+                            <div class="news-content">
+                                <span class="news-category">Testimony</span>
+                                <h4>"My Life Changed at JCCO" – Sarah, 12</h4>
+                                <p class="news-excerpt">How a young girl encountered Jesus and now leads her school prayer group...</p>
+                                <span class="news-date"><i class="fas fa-clock"></i> May 23, 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- News 3 -->
+                        <div class="news-item">
+                            <div class="news-image">
+                                <img src="images/2023-2024/6.jpg" alt="News thumbnail" />
+                            </div>
+                            <div class="news-content">
+                                <span class="news-category">Partnership</span>
+                                <h4>New School Partnership Announced</h4>
+                                <p class="news-excerpt">We've added 3 new schools to our outreach program...</p>
+                                <span class="news-date"><i class="fas fa-clock"></i> Feb 10, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="view-all-link">Read All News <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Call to Action -->
     <section class="section-padding bg-light">
@@ -1326,7 +1529,7 @@
                 <div class="footer-col">
                     <div class="footer-logo">
                         <div class="footer-logo-icon">
-                    <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo"  class="logo-image">
+                            <img src="images/ujm_logo.png" alt="Uncle Jeremy Ministries Logo" class="logo-image" />
                         </div>
                         <h3>Uncle Jeremy Ministries</h3>
                     </div>
@@ -1345,7 +1548,7 @@
                         <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
                         <li><a href="events.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
                         <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
-                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Testimonies</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News &amp; Testimonies</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1373,7 +1576,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript -->
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -1394,44 +1597,40 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 navMenu.classList.remove('active');
             });
         });
-       // ===== DARK MODE TOGGLE =====
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const icon = toggleBtn.querySelector('i');
-    const body = document.body;
 
-    // Check for saved preference
-    const currentMode = localStorage.getItem('darkMode');
-    if (currentMode === 'enabled') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = toggleBtn.querySelector('i');
+            const body = document.body;
 
-    // Toggle on click
-    toggleBtn.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        const isDark = body.classList.contains('dark-mode');
-        
-        // Update icon
-        if (isDark) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    });
-}); 
+            const currentMode = localStorage.getItem('darkMode');
+            if (currentMode === 'enabled') {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+
+            toggleBtn.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        });
     </script>
 </body>
 </html>

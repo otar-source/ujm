@@ -1585,6 +1585,7 @@ a {
 }
 
 .footer-logo-icon {
+    padding: 8px;
     width: 55px;
     height: 45px;
     background: white;
