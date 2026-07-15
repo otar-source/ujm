@@ -5,15 +5,15 @@
 }
 
 :root {
-    --primary: #e63946;
-    --primary-light: #ff6b6b;
+    --primary: #0055aa;
+    --primary-light: #6be1ff;
     --primary-dark: #c1121f;
-    --secondary: #f77f00;
+    --secondary: #8a2be2;
     --secondary-light: #ff9e5e;
     --secondary-dark: #d56f00;
-    --accent: #ff9e00;
+    --accent: #dc143c;
     --light: #f8f9fa;
-    --dark: #212529;
+    --dark: #1a1a2e;
     --gray: #6c757d;
     --light-gray: #e9ecef;
     --success: #2a9d8f;
