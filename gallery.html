@@ -782,8 +782,9 @@ body.dark-mode .logo-image {
         }
 
         .footer-logo-icon {
-            width: 50px;
+            width: 55px;
             height: 50px;
+            padding: 6px;
             background:white;
             border-radius: 50%;
             display: flex;
@@ -874,7 +875,11 @@ body.dark-mode .logo-image {
             font-size: 0.8rem;
         }
 
+        .contact-info{
+            padding: 10px;
+        }
         .contact-info p {
+         
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1003,10 +1008,18 @@ body.dark-mode .logo-image {
             }
         }
 
-        @media (max-width: 480px) {
+ @media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .gallery-hero h1 {
+        font-size: 2rem;
+    }
+}
+        @media (max-width: 458px) {
              .logo {
-        flex-direction: column;      
-        text-align: center;
+        flex-direction: flex;      
+        text-align: left;
     }
     .logo-icon {
         margin-bottom: 5px;  

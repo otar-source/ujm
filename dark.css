@@ -99,7 +99,16 @@ body.dark-mode .card h3,
 body.dark-mode .leader-info h3 {
     color: #f0f0f0;
 }
+body.dark-mode .filter-btn{
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
 
+body.dark-mode .news-section, 
+body.dark-mode .eventss, 
+body.dark-mode .nav-menu.active{
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
 body.dark-mode h1 {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;

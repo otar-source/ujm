@@ -259,6 +259,7 @@ a {
     list-style: none;
     gap: 30px;
     align-items: center;
+    z-index: 1000;
 }
 
 .nav-menu a {
@@ -1583,7 +1584,12 @@ a {
     gap: 15px;
     margin-bottom: 25px;
 }
-
+.nav-menu{
+    
+}
+ .contact-info{
+            padding: 10px;
+        }
 .footer-logo-icon {
     padding: 8px;
     width: 55px;
